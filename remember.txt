@@ -1,0 +1,43 @@
+--------------------------------------------------------------------------------
+Removing alpha channel from images
+--------------------------------------------------------------------------------
+single file:
+bash>convert input.png -alpha off output.png
+multiple files:
+bash>find . -name "*.png" -exec convert "{}" -alpha off "{}" \;
+
+--------------------------------------------------------------------------------
+If getting iOS Simulator to be able to connect to https://dev.rikerapp.com (SSL
+trust issues):
+--------------------------------------------------------------------------------
+If getting HTTP connection code -1012, it means that iOS does not trust the SSL
+cert associate with dev.rikerapp.com.  To fix this, do the following:
+
+  (1) Follow instructions in ../riker-web/local-ssl/notes.txt to generate
+certificates (this is a 1-time only thing and is probably already done)
+  (2) You need to drag to the simulator file:
+  ../riker-web/local-ssl/ssl/rootCA.pem Follow the prompts in the simulator to
+  install / trust the certificate.
+  (3) In simulator -> Settings -> General -> About -> Certifate Trust Settings,
+  make sure the certificate is trusted.
+
+--------------------------------------------------------------------------------
+How to make App Preview movies using simulator:
+--------------------------------------------------------------------------------
+https://stackoverflow.com/a/41141801/1034895
+And screen size reference:
+https://help.apple.com/app-store-connect/#/devd274dd925
+
++ Make sure the size of the simulator window matches the physical size (Window -> Physical Size)
++ >xcrun simctl io booted recordVideo my-video.mov
++ ctrl+c to stop
++ Then import mov file into iMovie
++ in iMovie, do File -> New App Preview.  Drag imported movie into the editor
+pane (bottom pane).  Also, you need to have an audio track.  Find any audio file
+and drag it to your app preview project.  Then drag to the editor pane.  Shorten
+the audio file so that it matches the length of the movie clip.  With both movie
+and audio selected in the editor pane, click the audio icon in the top-right
+pane and set it to 0% (because you don't really want to have audio, but the
+final mp4 needs to have an audio track for iTunes to accept it).
++ Edit appropriately
++ Export as App Preview

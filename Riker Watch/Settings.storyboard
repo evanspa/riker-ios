@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14109" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14031"/>
+    </dependencies>
+    <scenes>
+        <!--settings-->
+        <scene sceneID="Don-Oq-JCU">
+            <objects>
+                <controller identifier="Settings" title="settings" id="fM4-2M-mck" customClass="RSettingsController">
+                    <items>
+                        <group width="1" alignment="center" verticalAlignment="center" layout="vertical" id="22v-ro-kj4">
+                            <items>
+                                <button alignment="center" verticalAlignment="center" id="dSO-Vi-ao2">
+                                    <group key="contentGroup" width="1" alignment="left" layout="vertical" id="cbu-gL-GWy">
+                                        <items>
+                                            <label alignment="center" verticalAlignment="center" text="Pull Latest from iPhone" textAlignment="center" numberOfLines="0" id="fS3-Kg-43e">
+                                                <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                            </label>
+                                        </items>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.47450980390000003" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <edgeInsets key="margins" left="4" right="4" top="4" bottom="4"/>
+                                    </group>
+                                    <connections>
+                                        <action selector="reloadMovementsAction" destination="fM4-2M-mck" id="xCY-mT-p0Q"/>
+                                    </connections>
+                                </button>
+                                <label alignment="left" verticalAlignment="center" textAlignment="left" numberOfLines="0" id="hqy-zq-7nU">
+                                    <string key="text">Downloads the latest movements, settings, workouts and sets data from your iPhone (workouts and sets display in Riker's complications).</string>
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="4" bottom="0.0"/>
+                        </group>
+                        <group width="1" alignment="center" verticalAlignment="center" layout="vertical" id="6YW-8g-dna">
+                            <items>
+                                <separator alignment="center" verticalAlignment="center" id="8e7-Cy-oOc">
+                                    <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </separator>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="6" bottom="6"/>
+                        </group>
+                        <group width="1" alignment="center" verticalAlignment="center" layout="vertical" id="C71-0K-YQm">
+                            <items>
+                                <switch width="1" alignment="left" title="Negatives" id="dAd-Af-EXp">
+                                    <connections>
+                                        <action selector="captureNegativesValueChanged:" destination="fM4-2M-mck" id="hst-4M-quw"/>
+                                    </connections>
+                                </switch>
+                                <label alignment="left" numberOfLines="0" id="rG1-aN-Seb">
+                                    <string key="text">If you sometimes do negatives (aka Eccentric training), enable this and a "Negatives" option will appear on the Enter Reps screen.</string>
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="4"/>
+                        </group>
+                        <group width="1" alignment="center" verticalAlignment="center" layout="vertical" id="Jcy-Ez-g27">
+                            <items>
+                                <separator alignment="center" verticalAlignment="center" id="XdA-Qo-Md2">
+                                    <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </separator>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="6" bottom="6"/>
+                        </group>
+                        <label alignment="left" verticalAlignment="center" text="Weight and size units can be changed from the Profile and Settings screen of the Riker iPhone app." numberOfLines="0" id="als-Qv-OvC">
+                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                        </label>
+                        <label alignment="left" verticalAlignment="center" text="Once changed in the iPhone app, tap the &quot;Pull Latest from iPhone&quot; button above." numberOfLines="0" id="HaQ-WU-CS8">
+                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                        </label>
+                        <group width="1" alignment="center" verticalAlignment="center" layout="vertical" id="Yam-DU-8j8">
+                            <items>
+                                <separator alignment="center" verticalAlignment="center" id="yxS-mh-WKc">
+                                    <color key="color" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                                </separator>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="6" bottom="6"/>
+                        </group>
+                        <label alignment="left" verticalAlignment="center" text="Riker Version:" id="oFM-9L-1Ie"/>
+                        <label alignment="left" verticalAlignment="center" text="1.11 build 74" id="DP3-Rh-aeo">
+                            <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                        </label>
+                    </items>
+                    <connections>
+                        <outlet property="captureNegativesSwitch" destination="dAd-Af-EXp" id="Fxu-Yo-ky1"/>
+                        <outlet property="rikerVersion" destination="DP3-Rh-aeo" id="mf2-Gq-gPM"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-67" y="49"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13196" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="watch42" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13051"/>
+    </dependencies>
+    <scenes>
+        <!--Close-->
+        <scene sceneID="XAf-sX-Vrh">
+            <objects>
+                <controller identifier="AboutWeightDefaultedToBodyWeightPopup" title="Close" id="XIm-7p-O4p" customClass="RAboutWeightDefaultedToBodyWeightController">
+                    <items>
+                        <group width="1" alignment="center" verticalAlignment="center" layout="vertical" spacing="10" id="hhx-uJ-2A1">
+                            <items>
+                                <label alignment="left" text="Pull-ups is a body-lift movement estimated to use 100% of your body weight." numberOfLines="0" id="bus-5f-HfC">
+                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                </label>
+                                <label alignment="left" text="Based on your most recent body log, your body weight is 113.4 kg.  Therefore we've defaulted the weight field to 250 lbs." numberOfLines="0" id="DSh-8X-D3d">
+                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                </label>
+                                <button width="1" alignment="left" title="Got It" id="zfj-Gw-dw3">
+                                    <color key="backgroundColor" red="0.20000000000000001" green="0.47450980390000003" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                    <connections>
+                                        <action selector="gotIt" destination="XIm-7p-O4p" id="I3q-oJ-Ab4"/>
+                                    </connections>
+                                </button>
+                                <button width="1" alignment="left" title="Don't show me this again" id="Mzn-ai-JrY">
+                                    <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                    <connections>
+                                        <action selector="gotItAndDontShowAgain" destination="XIm-7p-O4p" id="iN4-aJ-3w3"/>
+                                    </connections>
+                                </button>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="4" bottom="0.0"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="label1" destination="bus-5f-HfC" id="ujO-E5-I8q"/>
+                        <outlet property="label2" destination="DSh-8X-D3d" id="KN9-Ld-edv"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-64" y="-130"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,6 @@
+{ "_links": {
+  "users": { "href": "https://dev.rikerapp.com/riker/d/users" },
+  "continue-with-facebook": { "href": "https://dev.rikerapp.com/riker/d/zNPlCGdOaLK_ZEH3Da6MYWm_x-dd-SrnDR02HorO/continue-with-facebook" },
+  "login": { "href": "https://dev.rikerapp.com/riker/d/login" },
+  "light-login": { "href": "https://dev.rikerapp.com/riker/d/light-login" },
+  "send-password-reset-email" : { "href": "https://dev.rikerapp.com/riker/d/send-password-reset-email" }}}

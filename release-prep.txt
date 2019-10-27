@@ -1,0 +1,26 @@
+Do the following in preparation for a release:
+----------------------------------------------
++ manually increment the "version" config value from within Xcode (Riker target
+-> 'Version' field on the 'General' screen).  You have to do this manually
+because the agvtool only seems to update the 'Build' value.
++ commit all code to git
++ run "./release <VERSION>"
+
+Example:
+
+./release.sh "1.7-b23"
+
+--------------------------------------------------------------------------------
+
++ Immediately after creating the IPA and uploading it to Apple, do the
+following:
+
+- Go back into Xcode and increment the build version and number.
+
+- Go into RLocalDaoImpl.m and adjust the R_REQUIRED_SCHEMA_VERSION constant
+  accordingly.  Create a new applyVersion<#>SchemaEditsWithError: method and
+  incorporate it into the switch/case within the
+  initializeDatabaseWithSqliteDataFilePath:error: method if needed.
+
+- Once the build is uploaded to iTunes and has been processed, download the
+  symbol files and upload them to firebase using the upload script.

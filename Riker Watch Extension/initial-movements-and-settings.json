@@ -1,0 +1,1965 @@
+{
+    "loaded-at-unix-time": 1511501372298.91,
+    "movement-variants": {
+        "121": [
+            {
+                "id": 4,
+                "name": "machine"
+            }
+        ],
+        "117": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 8,
+                "name": "smith machine"
+            },
+            {
+                "id": 32,
+                "name": "curl bar"
+            }
+        ],
+        "72": [
+            {
+                "id": 4,
+                "name": "machine"
+            },
+            {
+                "id": 128,
+                "name": "body"
+            }
+        ],
+        "68": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "73": [],
+        "69": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "122": [
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 128,
+                "name": "body"
+            }
+        ],
+        "118": [],
+        "74": [],
+        "75": [],
+        "123": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 128,
+                "name": "body"
+            }
+        ],
+        "119": [],
+        "80": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "76": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "81": [
+            {
+                "id": 2,
+                "name": "dumbbell"
+            }
+        ],
+        "77": [],
+        "82": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 4,
+                "name": "machine"
+            },
+            {
+                "id": 16,
+                "name": "cable"
+            },
+            {
+                "id": 32,
+                "name": "curl bar"
+            }
+        ],
+        "78": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "83": [
+            {
+                "id": 2,
+                "name": "dumbbell"
+            }
+        ],
+        "79": [
+            {
+                "id": 2,
+                "name": "dumbbell"
+            }
+        ],
+        "84": [
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "85": [],
+        "86": [
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "90": [
+            {
+                "id": 2,
+                "name": "dumbbell"
+            }
+        ],
+        "87": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "91": [
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "88": [
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "92": [],
+        "10": [
+            {
+                "id": 4,
+                "name": "machine"
+            },
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "89": [
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "11": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "93": [],
+        "94": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "12": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 8,
+                "name": "smith machine"
+            }
+        ],
+        "95": [
+            {
+                "id": 2,
+                "name": "dumbbell"
+            }
+        ],
+        "13": [
+            {
+                "id": 2,
+                "name": "dumbbell"
+            }
+        ],
+        "96": [],
+        "14": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "97": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 8,
+                "name": "smith machine"
+            }
+        ],
+        "15": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 4,
+                "name": "machine"
+            },
+            {
+                "id": 8,
+                "name": "smith machine"
+            },
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "98": [],
+        "16": [
+            {
+                "id": 2,
+                "name": "dumbbell"
+            }
+        ],
+        "20": [
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "99": [],
+        "17": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 8,
+                "name": "smith machine"
+            }
+        ],
+        "21": [
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "18": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "22": [
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "19": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "23": [
+            {
+                "id": 2,
+                "name": "dumbbell"
+            }
+        ],
+        "24": [
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "25": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 8,
+                "name": "smith machine"
+            }
+        ],
+        "30": [
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 32,
+                "name": "curl bar"
+            }
+        ],
+        "26": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 8,
+                "name": "smith machine"
+            }
+        ],
+        "31": [
+            {
+                "id": 64,
+                "name": "sled"
+            }
+        ],
+        "27": [
+            {
+                "id": 4,
+                "name": "machine"
+            },
+            {
+                "id": 128,
+                "name": "body"
+            }
+        ],
+        "32": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "28": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 8,
+                "name": "smith machine"
+            }
+        ],
+        "100": [
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "29": [
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "33": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 8,
+                "name": "smith machine"
+            }
+        ],
+        "34": [
+            {
+                "id": 4,
+                "name": "machine"
+            }
+        ],
+        "101": [
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "35": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 16,
+                "name": "cable"
+            },
+            {
+                "id": 32,
+                "name": "curl bar"
+            }
+        ],
+        "102": [],
+        "40": [],
+        "36": [
+            {
+                "id": 4,
+                "name": "machine"
+            },
+            {
+                "id": 8,
+                "name": "smith machine"
+            },
+            {
+                "id": 128,
+                "name": "body"
+            }
+        ],
+        "41": [],
+        "37": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 4,
+                "name": "machine"
+            },
+            {
+                "id": 16,
+                "name": "cable"
+            },
+            {
+                "id": 32,
+                "name": "curl bar"
+            }
+        ],
+        "103": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "42": [],
+        "38": [],
+        "0": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 4,
+                "name": "machine"
+            },
+            {
+                "id": 8,
+                "name": "smith machine"
+            },
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "1": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 4,
+                "name": "machine"
+            },
+            {
+                "id": 8,
+                "name": "smith machine"
+            },
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "43": [],
+        "39": [],
+        "2": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 4,
+                "name": "machine"
+            },
+            {
+                "id": 8,
+                "name": "smith machine"
+            },
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "104": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "3": [
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 4,
+                "name": "machine"
+            },
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "44": [],
+        "4": [
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 4,
+                "name": "machine"
+            },
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "45": [],
+        "5": [
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 4,
+                "name": "machine"
+            },
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "105": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "6": [],
+        "46": [],
+        "50": [],
+        "7": [],
+        "8": [
+            {
+                "id": 4,
+                "name": "machine"
+            },
+            {
+                "id": 128,
+                "name": "body"
+            }
+        ],
+        "47": [
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "110": [],
+        "106": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "51": [
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "9": [
+            {
+                "id": 4,
+                "name": "machine"
+            },
+            {
+                "id": 16,
+                "name": "cable"
+            }
+        ],
+        "48": [],
+        "52": [],
+        "111": [
+            {
+                "id": 4,
+                "name": "machine"
+            }
+        ],
+        "107": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "49": [],
+        "53": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "54": [
+            {
+                "id": 256,
+                "name": "kettlebell"
+            }
+        ],
+        "112": [
+            {
+                "id": 4,
+                "name": "machine"
+            }
+        ],
+        "55": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 128,
+                "name": "body"
+            }
+        ],
+        "108": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "56": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 8,
+                "name": "smith machine"
+            }
+        ],
+        "60": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "113": [
+            {
+                "id": 4,
+                "name": "machine"
+            },
+            {
+                "id": 64,
+                "name": "sled"
+            }
+        ],
+        "109": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "57": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 8,
+                "name": "smith machine"
+            }
+        ],
+        "61": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "58": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 64,
+                "name": "sled"
+            }
+        ],
+        "62": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "114": [],
+        "63": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "59": [
+            {
+                "id": 2,
+                "name": "dumbbell"
+            }
+        ],
+        "64": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "115": [],
+        "65": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "120": [
+            {
+                "id": 1,
+                "name": "barbell"
+            },
+            {
+                "id": 2,
+                "name": "dumbbell"
+            },
+            {
+                "id": 128,
+                "name": "body"
+            }
+        ],
+        "116": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "70": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "66": [],
+        "71": [
+            {
+                "id": 1,
+                "name": "barbell"
+            }
+        ],
+        "67": [
+            {
+                "id": 4,
+                "name": "machine"
+            }
+        ]
+    },
+    "inc-dec-weight-amount": 5,
+    "weight-uom-id": 0,
+    "movements": {
+        "7": [
+            {
+                "name": "calf press",
+                "id": 113,
+                "is-body-lift": false,
+                "variant-count": 2
+            },
+            {
+                "name": "calf raises",
+                "id": 36,
+                "percentage-of-body-weight": 1,
+                "is-body-lift": false,
+                "variant-count": 3
+            },
+            {
+                "name": "seated calf raises",
+                "id": 121,
+                "is-body-lift": false,
+                "variant-count": 1
+            }
+        ],
+        "3": [
+            {
+                "name": "ab roller",
+                "id": 41,
+                "percentage-of-body-weight": 0.5,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "bicycle crunches",
+                "id": 43,
+                "percentage-of-body-weight": 0.2,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "cable crunches",
+                "id": 47,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "crunches",
+                "id": 42,
+                "percentage-of-body-weight": 0.2,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "jackknifes",
+                "id": 48,
+                "percentage-of-body-weight": 0.4,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "kettlebell swing",
+                "id": 54,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "knee raises",
+                "id": 49,
+                "percentage-of-body-weight": 0.4,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "landmine anti-rotations",
+                "id": 108,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "leg raises",
+                "id": 44,
+                "percentage-of-body-weight": 0.4,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "pelvic lifts",
+                "id": 46,
+                "percentage-of-body-weight": 0.2,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "plank push-up",
+                "id": 99,
+                "percentage-of-body-weight": 0.64,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "Russian twists",
+                "id": 45,
+                "percentage-of-body-weight": 0.3,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "sit ups",
+                "id": 38,
+                "percentage-of-body-weight": 0.5,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "V-ups",
+                "id": 50,
+                "percentage-of-body-weight": 0.75,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "woodchoppers",
+                "id": 51,
+                "is-body-lift": false,
+                "variant-count": 1
+            }
+        ],
+        "8": [
+            {
+                "name": "bench dips",
+                "id": 92,
+                "percentage-of-body-weight": 0.75,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "close-grip bench press",
+                "id": 28,
+                "is-body-lift": false,
+                "variant-count": 2
+            },
+            {
+                "name": "close-grip push-up",
+                "id": 115,
+                "percentage-of-body-weight": 0.64,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "dead-stop push-up",
+                "id": 98,
+                "percentage-of-body-weight": 0.64,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "dips",
+                "id": 27,
+                "percentage-of-body-weight": 0.95,
+                "is-body-lift": true,
+                "variant-count": 2
+            },
+            {
+                "name": "JM press",
+                "id": 117,
+                "is-body-lift": false,
+                "variant-count": 3
+            },
+            {
+                "name": "muscle-up",
+                "id": 74,
+                "percentage-of-body-weight": 1,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "overhead extensions",
+                "id": 90,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "overhead rope extensions",
+                "id": 91,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "plank push-up",
+                "id": 99,
+                "percentage-of-body-weight": 0.64,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "pushdowns",
+                "id": 29,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "reverse pushdowns",
+                "id": 88,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "rope pushdowns",
+                "id": 89,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "tricep extensions",
+                "id": 30,
+                "is-body-lift": false,
+                "variant-count": 2
+            }
+        ],
+        "11": [
+            {
+                "name": "barbell thruster",
+                "id": 105,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "deadlifts",
+                "id": 32,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "dirty dog",
+                "id": 52,
+                "percentage-of-body-weight": 0.2,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "hip thrust",
+                "id": 53,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "kettlebell swing",
+                "id": 54,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "landmine thruster",
+                "id": 106,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "leg press",
+                "id": 31,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "lunges",
+                "id": 55,
+                "percentage-of-body-weight": 0.75,
+                "is-body-lift": false,
+                "variant-count": 3
+            },
+            {
+                "name": "pelvic lifts",
+                "id": 46,
+                "percentage-of-body-weight": 0.2,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "rear lunges",
+                "id": 120,
+                "percentage-of-body-weight": 0.75,
+                "is-body-lift": false,
+                "variant-count": 3
+            },
+            {
+                "name": "Romanian deadlift",
+                "id": 70,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "rotational single-arm press",
+                "id": 107,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "side lunges",
+                "id": 122,
+                "percentage-of-body-weight": 0.75,
+                "is-body-lift": false,
+                "variant-count": 2
+            },
+            {
+                "name": "step-up",
+                "id": 123,
+                "percentage-of-body-weight": 0.75,
+                "is-body-lift": false,
+                "variant-count": 3
+            },
+            {
+                "name": "stiff legged deadlift",
+                "id": 69,
+                "is-body-lift": false,
+                "variant-count": 1
+            }
+        ],
+        "0": [
+            {
+                "name": "Arnold press",
+                "id": 16,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "barbell thruster",
+                "id": 105,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "bent-over laterals",
+                "id": 24,
+                "is-body-lift": false,
+                "variant-count": 2
+            },
+            {
+                "name": "clean and press",
+                "id": 18,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "cross cable laterals",
+                "id": 22,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "dead-stop push-up",
+                "id": 98,
+                "percentage-of-body-weight": 0.64,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "face pull",
+                "id": 86,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "front raises",
+                "id": 21,
+                "is-body-lift": false,
+                "variant-count": 2
+            },
+            {
+                "name": "high pull",
+                "id": 87,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "incline bench press",
+                "id": 1,
+                "is-body-lift": false,
+                "variant-count": 5
+            },
+            {
+                "name": "inverted row",
+                "id": 75,
+                "percentage-of-body-weight": 0.8,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "jump shrug",
+                "id": 76,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "kettlebell swing",
+                "id": 54,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "landmine thruster",
+                "id": 106,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "lateral raises",
+                "id": 20,
+                "is-body-lift": false,
+                "variant-count": 2
+            },
+            {
+                "name": "military press",
+                "id": 17,
+                "is-body-lift": false,
+                "variant-count": 2
+            },
+            {
+                "name": "overhead laterals",
+                "id": 23,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "pike press",
+                "id": 118,
+                "percentage-of-body-weight": 0.64,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "plank push-up",
+                "id": 99,
+                "percentage-of-body-weight": 0.64,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "push press",
+                "id": 19,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "rear delt machine",
+                "id": 112,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "rotational single-arm press",
+                "id": 107,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "shoulder press",
+                "id": 15,
+                "is-body-lift": false,
+                "variant-count": 5
+            },
+            {
+                "name": "shrugs",
+                "id": 26,
+                "is-body-lift": false,
+                "variant-count": 3
+            },
+            {
+                "name": "upright rows",
+                "id": 25,
+                "is-body-lift": false,
+                "variant-count": 2
+            }
+        ],
+        "9": [
+            {
+                "name": "chin-up",
+                "id": 73,
+                "percentage-of-body-weight": 1,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "concentration curls",
+                "id": 81,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "curls",
+                "id": 37,
+                "is-body-lift": false,
+                "variant-count": 5
+            },
+            {
+                "name": "muscle-up",
+                "id": 74,
+                "percentage-of-body-weight": 1,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "preacher curls",
+                "id": 82,
+                "is-body-lift": false,
+                "variant-count": 5
+            }
+        ],
+        "5": [
+            {
+                "name": "air squats",
+                "id": 96,
+                "percentage-of-body-weight": 0.75,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "barbell thruster",
+                "id": 105,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "box squats",
+                "id": 56,
+                "is-body-lift": false,
+                "variant-count": 2
+            },
+            {
+                "name": "burpee",
+                "id": 114,
+                "percentage-of-body-weight": 0.85,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "clean",
+                "id": 62,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "clean and jerk",
+                "id": 63,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "deadlifts",
+                "id": 32,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "front squats",
+                "id": 57,
+                "is-body-lift": false,
+                "variant-count": 2
+            },
+            {
+                "name": "hack squats",
+                "id": 58,
+                "is-body-lift": false,
+                "variant-count": 2
+            },
+            {
+                "name": "hang clean",
+                "id": 65,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "hang power clean",
+                "id": 116,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "jump shrug",
+                "id": 76,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "jump squat",
+                "id": 66,
+                "percentage-of-body-weight": 0.5,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "landmine squats",
+                "id": 104,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "landmine thruster",
+                "id": 106,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "leg extensions",
+                "id": 34,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "leg press",
+                "id": 31,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "lunges",
+                "id": 55,
+                "percentage-of-body-weight": 0.75,
+                "is-body-lift": false,
+                "variant-count": 3
+            },
+            {
+                "name": "overhead squats",
+                "id": 60,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "press unders",
+                "id": 61,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "rear lunges",
+                "id": 120,
+                "percentage-of-body-weight": 0.75,
+                "is-body-lift": false,
+                "variant-count": 3
+            },
+            {
+                "name": "side lunges",
+                "id": 122,
+                "percentage-of-body-weight": 0.75,
+                "is-body-lift": false,
+                "variant-count": 2
+            },
+            {
+                "name": "split jerk",
+                "id": 64,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "split squats",
+                "id": 59,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "squats",
+                "id": 33,
+                "is-body-lift": false,
+                "variant-count": 2
+            },
+            {
+                "name": "step-up",
+                "id": 123,
+                "percentage-of-body-weight": 0.75,
+                "is-body-lift": false,
+                "variant-count": 3
+            },
+            {
+                "name": "Zercher squats",
+                "id": 97,
+                "is-body-lift": false,
+                "variant-count": 2
+            }
+        ],
+        "1": [
+            {
+                "name": "back extension",
+                "id": 72,
+                "percentage-of-body-weight": 0.5,
+                "is-body-lift": false,
+                "variant-count": 2
+            },
+            {
+                "name": "barbell thruster",
+                "id": 105,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "bent-over rows",
+                "id": 12,
+                "is-body-lift": false,
+                "variant-count": 2
+            },
+            {
+                "name": "bent-over two-dumbbell rows",
+                "id": 95,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "chin-up",
+                "id": 73,
+                "percentage-of-body-weight": 1,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "deadlifts",
+                "id": 32,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "good-mornings",
+                "id": 14,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "high rows",
+                "id": 111,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "inverted row",
+                "id": 75,
+                "percentage-of-body-weight": 0.8,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "jump shrug",
+                "id": 76,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "kipping pull-ups",
+                "id": 77,
+                "percentage-of-body-weight": 1,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "landmine thruster",
+                "id": 106,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "muscle-up",
+                "id": 74,
+                "percentage-of-body-weight": 1,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "one arm bent-over rows",
+                "id": 13,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "pelvic lifts",
+                "id": 46,
+                "percentage-of-body-weight": 0.2,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "Pendlay rows",
+                "id": 78,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "pull-ups",
+                "id": 39,
+                "percentage-of-body-weight": 1,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "pulldowns",
+                "id": 9,
+                "is-body-lift": false,
+                "variant-count": 2
+            },
+            {
+                "name": "rows",
+                "id": 10,
+                "is-body-lift": false,
+                "variant-count": 2
+            },
+            {
+                "name": "single-arm landmine row",
+                "id": 109,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "t-bar rows",
+                "id": 11,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "wide grip pull-ups",
+                "id": 40,
+                "percentage-of-body-weight": 1,
+                "is-body-lift": true,
+                "variant-count": 0
+            }
+        ],
+        "6": [
+            {
+                "name": "barbell thruster",
+                "id": 105,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "deadlifts",
+                "id": 32,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "hang snatch",
+                "id": 68,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "kettlebell swing",
+                "id": 54,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "landmine thruster",
+                "id": 106,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "leg curl",
+                "id": 67,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "leg press",
+                "id": 31,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "power cleans",
+                "id": 94,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "Romanian deadlift",
+                "id": 70,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "stiff legged deadlift",
+                "id": 69,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "sumo deadlift",
+                "id": 71,
+                "is-body-lift": false,
+                "variant-count": 1
+            }
+        ],
+        "10": [
+            {
+                "name": "grippers",
+                "id": 93,
+                "is-body-lift": false,
+                "variant-count": 0
+            },
+            {
+                "name": "hammer curls",
+                "id": 79,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "reverse barbell curls",
+                "id": 80,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "wrist curls",
+                "id": 35,
+                "is-body-lift": false,
+                "variant-count": 4
+            }
+        ],
+        "2": [
+            {
+                "name": "around the worlds",
+                "id": 83,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "bench press",
+                "id": 0,
+                "is-body-lift": false,
+                "variant-count": 5
+            },
+            {
+                "name": "cable crossovers",
+                "id": 84,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "dead-stop push-up",
+                "id": 98,
+                "percentage-of-body-weight": 0.64,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "decline bench press",
+                "id": 2,
+                "is-body-lift": false,
+                "variant-count": 5
+            },
+            {
+                "name": "decline flys",
+                "id": 5,
+                "is-body-lift": false,
+                "variant-count": 3
+            },
+            {
+                "name": "flys",
+                "id": 3,
+                "is-body-lift": false,
+                "variant-count": 3
+            },
+            {
+                "name": "hanging serratus crunches",
+                "id": 102,
+                "percentage-of-body-weight": 0.5,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "incline bench press",
+                "id": 1,
+                "is-body-lift": false,
+                "variant-count": 5
+            },
+            {
+                "name": "incline flys",
+                "id": 4,
+                "is-body-lift": false,
+                "variant-count": 3
+            },
+            {
+                "name": "kneeling push-up",
+                "id": 85,
+                "percentage-of-body-weight": 0.4,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "landmine press",
+                "id": 103,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "one arm push-up",
+                "id": 7,
+                "percentage-of-body-weight": 0.64,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "pike push-up",
+                "id": 119,
+                "percentage-of-body-weight": 0.64,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "plank push-up",
+                "id": 99,
+                "percentage-of-body-weight": 0.64,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "pullovers",
+                "id": 100,
+                "is-body-lift": false,
+                "variant-count": 2
+            },
+            {
+                "name": "push-up",
+                "id": 6,
+                "percentage-of-body-weight": 0.64,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "rope pulls",
+                "id": 101,
+                "is-body-lift": false,
+                "variant-count": 1
+            },
+            {
+                "name": "typewriter push-up",
+                "id": 110,
+                "percentage-of-body-weight": 0.64,
+                "is-body-lift": true,
+                "variant-count": 0
+            },
+            {
+                "name": "wide grip dips",
+                "id": 8,
+                "percentage-of-body-weight": 0.95,
+                "is-body-lift": true,
+                "variant-count": 2
+            }
+        ]
+    },
+    "weight-uom-name": "lbs",
+    "body-segments": [
+        {
+            "id": 0,
+            "name": "upper body"
+        },
+        {
+            "id": 1,
+            "name": "lower body"
+        }
+    ],
+    "converted-body-weight": 229,
+    "body-weight": 229,
+    "muscle-groups": {
+        "0": [
+            {
+                "id": 3,
+                "name": "core"
+            },
+            {
+                "id": 1,
+                "name": "back"
+            },
+            {
+                "id": 9,
+                "name": "biceps"
+            },
+            {
+                "id": 2,
+                "name": "chest"
+            },
+            {
+                "id": 10,
+                "name": "forearms"
+            },
+            {
+                "id": 0,
+                "name": "shoulders"
+            },
+            {
+                "id": 8,
+                "name": "triceps"
+            }
+        ],
+        "1": [
+            {
+                "id": 7,
+                "name": "calfs"
+            },
+            {
+                "id": 11,
+                "name": "glutes"
+            },
+            {
+                "id": 6,
+                "name": "hamstrings"
+            },
+            {
+                "id": 5,
+                "name": "quadriceps"
+            }
+        ]
+    },
+    "size-uom-name": "in",
+    "size-uom-id": 0,
+    "body-weight-uom-name": "lbs"
+}

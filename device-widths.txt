@@ -1,0 +1,5 @@
+Results from calling: CGRectGetWidth([[UIScreen mainScreen] bounds])
+--------------------------------------------------------------------------------
+iPhone 5S: 320.0
+iPhone 6:  375.0
+iPhone 6+: 414.0

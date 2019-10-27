@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13529" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13507"/>
+    </dependencies>
+    <scenes>
+        <!--enter value-->
+        <scene sceneID="JPz-0e-gmQ">
+            <objects>
+                <controller identifier="EnterBml" title="enter value" spacing="12" hidesWhenLoading="NO" id="Nbo-LE-5bt" customClass="REnterBmlController">
+                    <items>
+                        <group width="1" alignment="center" verticalAlignment="center" layout="vertical" spacing="4" id="GyN-jx-ok4">
+                            <items>
+                                <group width="1" height="79" alignment="left" layout="vertical" id="nd3-oP-fB8">
+                                    <items>
+                                        <label alignment="center" verticalAlignment="center" text="Body Weight" numberOfLines="0" id="x3y-Sq-Bix">
+                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                        </label>
+                                        <group width="1" alignment="center" verticalAlignment="center" layout="vertical" spacing="0.0" id="G8O-xS-h5t">
+                                            <items>
+                                                <label alignment="center" verticalAlignment="center" text="250" textAlignment="justified" id="9BF-DR-h8K">
+                                                    <fontDescription key="font" type="system" weight="medium" pointSize="30"/>
+                                                    <variation key="device=watch42mm">
+                                                        <fontDescription key="font" type="system" weight="medium" pointSize="32"/>
+                                                    </variation>
+                                                </label>
+                                                <label alignment="center" verticalAlignment="center" text="kg" numberOfLines="0" id="uQc-Uf-TiN"/>
+                                            </items>
+                                        </group>
+                                    </items>
+                                </group>
+                                <button width="1" height="52" alignment="center" verticalAlignment="center" title="Save" id="CXx-20-nEi">
+                                    <color key="backgroundColor" red="0.3411764706" green="0.72549019609999998" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" type="system" weight="semibold" pointSize="20"/>
+                                    <variation key="device=watch42mm" height="60">
+                                        <fontDescription key="font" type="system" weight="semibold" pointSize="22"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="save" destination="Nbo-LE-5bt" id="UpZ-dZ-Gm8"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="titleLabel" destination="x3y-Sq-Bix" id="BLf-dg-FFs"/>
+                        <outlet property="uomLabel" destination="uQc-Uf-TiN" id="0fA-Ki-iII"/>
+                        <outlet property="valueLabel" destination="9BF-DR-h8K" id="1XL-MK-QOQ"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-313" y="-83"/>
+        </scene>
+    </scenes>
+</document>

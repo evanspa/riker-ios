@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13529" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="watch42" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13507"/>
+    </dependencies>
+    <scenes>
+        <!--Set Detail-->
+        <scene sceneID="uHv-UX-bmV">
+            <objects>
+                <controller identifier="SetDetail" title="Set Detail" id="th5-FU-XFM" customClass="RSetDetailController">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" id="5Iv-9S-DF7">
+                            <items>
+                                <label alignment="left" text="10/17/2015 24:14:38" numberOfLines="0" id="dA4-O5-e8B">
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                                <label alignment="left" text="bench press" numberOfLines="0" id="rGY-I7-YqP">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                                <label alignment="left" text="smith machine" numberOfLines="0" id="99n-QQ-qE4">
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                                <label alignment="left" text="10 reps of 135 lbs" numberOfLines="0" id="p0d-bd-gVz">
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                                <label alignment="left" text="To failure? Yes" numberOfLines="0" id="fc6-51-tjO">
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                                <label alignment="left" text="Negatives? No" numberOfLines="0" id="Tf2-F1-bTM">
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                                <label alignment="left" text="not synced to iPhone" numberOfLines="0" id="grR-zO-lu0">
+                                    <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                                <button width="1" alignment="left" title="Delete" id="JBK-H0-Gb8">
+                                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                    <connections>
+                                        <action selector="delete" destination="th5-FU-XFM" id="2Jj-Zz-jDs"/>
+                                    </connections>
+                                </button>
+                                <label alignment="left" text="Use Riker on your iPhone to edit or delete this set." numberOfLines="0" id="Ama-aL-vTS">
+                                    <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <edgeInsets key="margins" left="4" right="4" top="4" bottom="4"/>
+                            <variation key="device=watch42mm">
+                                <edgeInsets key="margins" left="6" right="6" top="6" bottom="6"/>
+                            </variation>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="dateLabel" destination="dA4-O5-e8B" id="dEb-rC-Rju"/>
+                        <outlet property="deleteButton" destination="JBK-H0-Gb8" id="AeE-Ep-4H3"/>
+                        <outlet property="editOrDeleteLabel" destination="Ama-aL-vTS" id="0yB-5S-i5b"/>
+                        <outlet property="movementLabel" destination="rGY-I7-YqP" id="BuM-YW-cq7"/>
+                        <outlet property="movementVariantLabel" destination="99n-QQ-qE4" id="YFE-zx-Zwl"/>
+                        <outlet property="negativesLabel" destination="Tf2-F1-bTM" id="3bs-KC-Wgd"/>
+                        <outlet property="repsAndWeightLabel" destination="p0d-bd-gVz" id="9Oj-Kc-FwD"/>
+                        <outlet property="syncedLabel" destination="grR-zO-lu0" id="uVa-xk-t3o"/>
+                        <outlet property="toFailureLabel" destination="fc6-51-tjO" id="MCH-vP-Qbl"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-168" y="30"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13529" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13507"/>
+    </dependencies>
+    <scenes>
+        <!--Close-->
+        <scene sceneID="rAF-Sk-wzV">
+            <objects>
+                <controller identifier="SetSavedToWatch" title="Close" hidesWhenLoading="NO" id="1zd-rk-7fm" customClass="RSetSavedToWatchController">
+                    <items>
+                        <group width="1" alignment="center" verticalAlignment="center" layout="vertical" spacing="10" id="vqI-Rb-kIM">
+                            <items>
+                                <imageView alignment="center" verticalAlignment="center" image="success-icon" id="Hff-6D-jWT"/>
+                                <label alignment="center" verticalAlignment="center" text="Saved to Watch" numberOfLines="0" id="E4Y-An-4aZ">
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                            </items>
+                        </group>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-223" y="-108"/>
+        </scene>
+    </scenes>
+</document>

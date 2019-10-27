@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13196" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13051"/>
+    </dependencies>
+    <scenes>
+        <!--movements-->
+        <scene sceneID="B1C-VU-K3V">
+            <objects>
+                <controller identifier="SelectMovement" title="movements" hidesWhenLoading="NO" id="89W-gT-98k" customClass="RSelectMovementController">
+                    <items>
+                        <table alignment="left" verticalAlignment="center" id="nnM-0K-3xu">
+                            <items>
+                                <tableRow identifier="MovementRow" id="NB3-iu-fM3" customClass="RSelectEntityRowController">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="Mbg-9d-Brn">
+                                        <items>
+                                            <label alignment="center" verticalAlignment="center" text="Label" textAlignment="center" numberOfLines="0" id="zaK-F3-coz">
+                                                <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                            </label>
+                                        </items>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.47450980390000003" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <edgeInsets key="margins" left="4" right="4" top="10" bottom="10"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="group" destination="Mbg-9d-Brn" id="NgY-zI-PzL"/>
+                                        <outlet property="label" destination="zaK-F3-coz" id="iNR-7U-Guo"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="movementsTable" destination="nnM-0K-3xu" id="F7S-K5-cKM"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-96" y="11"/>
+        </scene>
+    </scenes>
+</document>

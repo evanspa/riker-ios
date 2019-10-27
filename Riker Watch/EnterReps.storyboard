@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13529" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="watch42" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13507"/>
+    </dependencies>
+    <scenes>
+        <!--enter reps-->
+        <scene sceneID="YTb-fL-RlM">
+            <objects>
+                <controller identifier="EnterReps" title="enter reps" id="dSH-YW-XjK" customClass="REnterRepsController">
+                    <items>
+                        <group width="1" alignment="left" verticalAlignment="center" layout="vertical" spacing="6" id="35w-7m-Mwf">
+                            <items>
+                                <label alignment="left" text="Bench press - barbell" numberOfLines="0" id="DzW-b7-xhS">
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                                <group width="1" alignment="left" id="0Bd-qG-NIa">
+                                    <items>
+                                        <label alignment="left" text="sets:" textAlignment="left" numberOfLines="0" id="ZOS-nz-RuQ">
+                                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                        </label>
+                                        <label alignment="left" text="-" textAlignment="left" numberOfLines="0" id="VqZ-Dn-uvG" userLabel="Completed Sets Label">
+                                            <color key="textColor" red="0.20000000000000001" green="0.47450980390000003" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                        </label>
+                                        <label alignment="left" text=" next:" textAlignment="left" numberOfLines="0" id="eTC-5S-d6W">
+                                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                        </label>
+                                        <label alignment="left" text="3" textAlignment="left" numberOfLines="0" id="z8O-fd-1S3" userLabel="Next Set Label">
+                                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                        </label>
+                                    </items>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                </group>
+                                <group width="1" alignment="left" id="Igp-Mx-biQ">
+                                    <items>
+                                        <button width="40" alignment="left" verticalAlignment="center" title="-5" id="STm-iB-Yqn">
+                                            <gestureRecognizers>
+                                                <longPressGestureRecognizer id="fqp-GK-se1">
+                                                    <connections>
+                                                        <action selector="handleDecrementWeightLongTapGesture:" destination="dSH-YW-XjK" id="pB8-QX-Wiw"/>
+                                                    </connections>
+                                                </longPressGestureRecognizer>
+                                            </gestureRecognizers>
+                                            <color key="backgroundColor" red="0.20000000000000001" green="0.47450980390000003" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                            <variation key="device=watch42mm" width="50"/>
+                                            <connections>
+                                                <action selector="decrementWeight" destination="dSH-YW-XjK" id="WYg-W6-IA1"/>
+                                            </connections>
+                                        </button>
+                                        <group alignment="center" verticalAlignment="center" layout="vertical" spacing="0.0" id="hSt-45-2cJ">
+                                            <items>
+                                                <button alignment="center" id="isn-dK-8xe">
+                                                    <group key="contentGroup" alignment="left" layout="vertical" id="lyz-Nn-tKX">
+                                                        <items>
+                                                            <group width="1" alignment="left" radius="6" id="PC3-5T-hMc">
+                                                                <items>
+                                                                    <label alignment="center" verticalAlignment="center" text="135" textAlignment="center" id="uFZ-ad-V4j">
+                                                                        <fontDescription key="font" type="system" weight="medium" pointSize="22"/>
+                                                                        <variation key="device=watch42mm">
+                                                                            <fontDescription key="font" type="system" weight="medium" pointSize="24"/>
+                                                                        </variation>
+                                                                    </label>
+                                                                </items>
+                                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </group>
+                                                        </items>
+                                                        <color key="backgroundColor" red="0.45009386540000001" green="0.98132258650000004" blue="0.4743030667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <edgeInsets key="margins" left="2" right="2" top="2" bottom="2"/>
+                                                    </group>
+                                                    <connections>
+                                                        <action selector="weightLabelButtonTapped" destination="dSH-YW-XjK" id="Zhk-Gj-dHf"/>
+                                                    </connections>
+                                                </button>
+                                                <label alignment="center" verticalAlignment="center" text="lbs" textAlignment="center" id="NuJ-8W-d4s">
+                                                    <fontDescription key="font" type="system" pointSize="8"/>
+                                                </label>
+                                            </items>
+                                        </group>
+                                        <button width="40" alignment="right" verticalAlignment="center" title="+5" id="zaq-i6-ima">
+                                            <gestureRecognizers>
+                                                <longPressGestureRecognizer id="NLm-KU-tny">
+                                                    <connections>
+                                                        <action selector="handleIncrementWeightLongTapGesture:" destination="dSH-YW-XjK" id="nOy-pv-zbJ"/>
+                                                    </connections>
+                                                </longPressGestureRecognizer>
+                                            </gestureRecognizers>
+                                            <color key="backgroundColor" red="0.20000000000000001" green="0.47450980390000003" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                            <variation key="device=watch42mm" width="50"/>
+                                            <connections>
+                                                <action selector="incrementWeight" destination="dSH-YW-XjK" id="a6w-f4-Kwj"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
+                                <group width="1" alignment="left" id="JPX-Xb-aQw">
+                                    <items>
+                                        <button width="40" alignment="left" verticalAlignment="center" title="-1" id="YMp-1U-Z0w">
+                                            <gestureRecognizers>
+                                                <longPressGestureRecognizer id="As4-LP-vX3">
+                                                    <connections>
+                                                        <action selector="handleDecrementRepsLongTapGesture:" destination="dSH-YW-XjK" id="yMI-GB-Kc2"/>
+                                                    </connections>
+                                                </longPressGestureRecognizer>
+                                            </gestureRecognizers>
+                                            <color key="backgroundColor" red="0.20000000000000001" green="0.47450980390000003" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                            <variation key="device=watch42mm" width="50"/>
+                                            <connections>
+                                                <action selector="decrementReps" destination="dSH-YW-XjK" id="e4C-MV-dJS"/>
+                                            </connections>
+                                        </button>
+                                        <group alignment="center" verticalAlignment="center" layout="vertical" spacing="0.0" id="NOf-mi-tzo">
+                                            <items>
+                                                <button alignment="left" id="g57-iD-h4P">
+                                                    <group key="contentGroup" width="1" alignment="left" layout="vertical" id="PiV-cs-CDK">
+                                                        <items>
+                                                            <group width="1" alignment="left" radius="6" id="T0e-Jt-Frx">
+                                                                <items>
+                                                                    <label alignment="center" verticalAlignment="center" text="10" textAlignment="center" id="gp1-WG-Y9K">
+                                                                        <fontDescription key="font" type="system" weight="medium" pointSize="22"/>
+                                                                        <variation key="device=watch42mm">
+                                                                            <fontDescription key="font" type="system" weight="medium" pointSize="24"/>
+                                                                        </variation>
+                                                                    </label>
+                                                                </items>
+                                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </group>
+                                                        </items>
+                                                        <color key="backgroundColor" red="0.45009386540000001" green="0.98132258650000004" blue="0.4743030667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <edgeInsets key="margins" left="2" right="2" top="2" bottom="2"/>
+                                                    </group>
+                                                    <connections>
+                                                        <action selector="repsLabelButtonTapped" destination="dSH-YW-XjK" id="i4b-QX-UPr"/>
+                                                    </connections>
+                                                </button>
+                                                <label alignment="center" verticalAlignment="center" text="reps" textAlignment="center" id="Nn1-an-L4A">
+                                                    <fontDescription key="font" type="system" pointSize="8"/>
+                                                </label>
+                                            </items>
+                                        </group>
+                                        <button width="40" alignment="right" verticalAlignment="center" title="+1" id="oWU-ue-Coa">
+                                            <gestureRecognizers>
+                                                <longPressGestureRecognizer id="2zK-F3-rdd">
+                                                    <connections>
+                                                        <action selector="handleIncrementRepsLongTapGesture:" destination="dSH-YW-XjK" id="dRg-iK-etS"/>
+                                                    </connections>
+                                                </longPressGestureRecognizer>
+                                            </gestureRecognizers>
+                                            <color key="backgroundColor" red="0.20000000000000001" green="0.47450980390000003" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                            <variation key="device=watch42mm" width="50"/>
+                                            <connections>
+                                                <action selector="incrementReps" destination="dSH-YW-XjK" id="5ZA-U0-yRe"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
+                                <separator alignment="left" id="ZxL-aB-KIu">
+                                    <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </separator>
+                                <switch width="1" alignment="left" title="To Failure" id="GPU-6J-FfZ">
+                                    <connections>
+                                        <action selector="toFailureValueChanged:" destination="dSH-YW-XjK" id="t0F-Rx-JgH"/>
+                                    </connections>
+                                </switch>
+                                <switch width="1" alignment="left" title="Negatives" id="v1U-nT-9UA">
+                                    <connections>
+                                        <action selector="negativesValueChanged:" destination="dSH-YW-XjK" id="tCW-1O-GSZ"/>
+                                    </connections>
+                                </switch>
+                                <separator alignment="left" id="Qaq-kc-Wch">
+                                    <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </separator>
+                                <button width="1" height="60" alignment="center" title="Save" id="GWl-FH-1fo">
+                                    <color key="backgroundColor" red="0.3411764705882353" green="0.72549019607843135" blue="0.33725490196078434" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" type="system" weight="semibold" pointSize="20"/>
+                                    <variation key="device=watch38mm" height="52"/>
+                                    <variation key="device=watch42mm">
+                                        <fontDescription key="font" type="system" weight="semibold" pointSize="22"/>
+                                    </variation>
+                                    <connections>
+                                        <action selector="save" destination="dSH-YW-XjK" id="tbL-Sr-nno"/>
+                                    </connections>
+                                </button>
+                                <separator alignment="left" id="8RO-Ac-yZM">
+                                    <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </separator>
+                                <label alignment="left" text="Push-ups is a body-lift movement estimated to use 64% of your body weight." numberOfLines="0" id="iRA-Ea-BIA">
+                                    <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                </label>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="4" bottom="0.0"/>
+                            <variation key="device=watch42mm" spacing="8"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="bodyLiftLabel" destination="iRA-Ea-BIA" id="xMH-KT-LbS"/>
+                        <outlet property="bodyLiftSeparator" destination="8RO-Ac-yZM" id="ybd-lD-xZc"/>
+                        <outlet property="decrementRepsButton" destination="YMp-1U-Z0w" id="o7e-PE-H7S"/>
+                        <outlet property="decrementWeightButton" destination="STm-iB-Yqn" id="FaA-Tw-UTz"/>
+                        <outlet property="incrementRepsButton" destination="oWU-ue-Coa" id="s0c-XF-HjE"/>
+                        <outlet property="incrementWeightButton" destination="zaq-i6-ima" id="uy9-Pj-8H9"/>
+                        <outlet property="movementAndVariantLabel" destination="DzW-b7-xhS" id="9UK-Oc-Pjt"/>
+                        <outlet property="negativesSwitch" destination="v1U-nT-9UA" id="7QJ-K0-mqB"/>
+                        <outlet property="nextSetNumberLabel" destination="z8O-fd-1S3" id="EHD-fU-NZK"/>
+                        <outlet property="repsLabel" destination="gp1-WG-Y9K" id="6vh-aO-2Op"/>
+                        <outlet property="repsLabelButton" destination="g57-iD-h4P" id="KVE-yX-iUZ"/>
+                        <outlet property="repsLabelGroupContainer" destination="PiV-cs-CDK" id="eRN-hP-DQH"/>
+                        <outlet property="saveButton" destination="GWl-FH-1fo" id="WUj-Jj-Vb3"/>
+                        <outlet property="setsCompletedLabel" destination="VqZ-Dn-uvG" id="Dw5-7c-VU6"/>
+                        <outlet property="toFailureSwitch" destination="GPU-6J-FfZ" id="0B6-Pu-tgw"/>
+                        <outlet property="weightLabel" destination="uFZ-ad-V4j" id="hrg-2b-9y8"/>
+                        <outlet property="weightLabelButton" destination="isn-dK-8xe" id="opz-Ru-Zyi"/>
+                        <outlet property="weightLabelGroupContainer" destination="lyz-Nn-tKX" id="Dil-CH-8Ha"/>
+                        <outlet property="weightUomLabel" destination="NuJ-8W-d4s" id="riw-Gy-7jX"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-213" y="-119.5"/>
+        </scene>
+    </scenes>
+</document>

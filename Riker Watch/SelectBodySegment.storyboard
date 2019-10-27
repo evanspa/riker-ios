@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13529" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13507"/>
+    </dependencies>
+    <scenes>
+        <!--body segments-->
+        <scene sceneID="wip-0p-TkG">
+            <objects>
+                <controller identifier="SelectBodySegment" title="body segments" hidesWhenLoading="NO" id="hZU-9l-2ds" customClass="RSelectBodySegmentController">
+                    <items>
+                        <group width="1" alignment="left" verticalAlignment="center" layout="vertical" spacing="10" id="VGf-Xt-pYT">
+                            <items>
+                                <table alignment="left" verticalAlignment="center" spacing="4" id="fIh-z2-7A8">
+                                    <items>
+                                        <tableRow identifier="BodySegmentRow" id="KU9-iQ-eYQ" customClass="RSelectEntityRowController">
+                                            <group key="rootItem" width="1" height="0.0" alignment="left" id="HpR-Eu-Dgr">
+                                                <items>
+                                                    <label alignment="center" verticalAlignment="center" text="Upper Body" textAlignment="center" numberOfLines="0" id="S9R-67-A9v"/>
+                                                </items>
+                                                <color key="backgroundColor" red="0.20000000000000001" green="0.47450980390000003" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <edgeInsets key="margins" left="4" right="4" top="10" bottom="10"/>
+                                            </group>
+                                            <connections>
+                                                <outlet property="label" destination="S9R-67-A9v" id="SSG-Ho-TBX"/>
+                                            </connections>
+                                        </tableRow>
+                                    </items>
+                                </table>
+                            </items>
+                            <variation key="device=watch38mm" spacing="8"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="bodySegmentsTable" destination="fIh-z2-7A8" id="Pib-xE-ZaC"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-202" y="-188"/>
+        </scene>
+    </scenes>
+</document>
