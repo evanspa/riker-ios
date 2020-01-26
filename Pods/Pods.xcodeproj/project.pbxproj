@@ -9213,7 +9213,24 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
+				da,
+				de,
+				"es-AR",
+				es,
+				fi,
+				"fr-CA",
+				fr,
+				it,
+				ja,
+				nb,
+				nl,
+				"nn-NO",
+				"pt-BR",
+				"pt-PT",
+				sv,
+				"zh-Hans",
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = F47193EB0842D9AAB2BF6455EACFAA83 /* Products */;
