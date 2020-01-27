@@ -11,6 +11,7 @@
 #import <PassKit/PassKit.h>
 
 #import "STPAddress.h"
+#import "STPAuthenticationContext.h"
 #import "STPBlocks.h"
 #import "STPPaymentConfiguration.h"
 #import "STPPaymentOption.h"
@@ -29,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  `STPPaymentContext` saves information about a user's payment methods to a Stripe customer object, and requires an `STPCustomerContext` to manage retrieving and modifying the customer.
  */
-@interface STPPaymentContext : NSObject
+@interface STPPaymentContext : NSObject <STPAuthenticationContext>
 
 /**
  This is a convenience initializer; it is equivalent to calling 
@@ -137,6 +138,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) BOOL loading;
 
 /**
+ The Stripe ID of a payment method to display as the default pre-selected option.
+ 
+ Customer doesn't have a default payment method property, but you can store one (in its metadata, for example) and set this property accordingly.
+
+ @note Set this property immediately after initializing STPPaymentContext, or call `retryLoading` afterwards.
+ */
+@property (nonatomic, copy, nullable) NSString *defaultPaymentMethod;
+
+/**
  The user's currently selected payment option. May be nil.
  */
 @property (nonatomic, readonly, nullable) id<STPPaymentOption> selectedPaymentOption;
@@ -172,7 +182,7 @@ NS_ASSUME_NONNULL_BEGIN
  for order fulfillment, as your user may change this information if they make 
  multiple purchases. We recommend adding shipping information when you create
  a charge (which can also help prevent fraud), or saving it to your own
- database. https://stripe.com/docs/api#create_charge-shipping
+ database. https://stripe.com/docs/api/payment_intents/create#create_payment_intent-shipping
 
  Note: by default, your user will still be prompted to verify a prefilled 
  shipping address. To change this behavior, you can set 
@@ -183,7 +193,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The amount of money you're requesting from the user, in the smallest currency 
  unit for the selected currency. For example, to indicate $10 USD, use 1000 
- (i.e. 1000 cents). For more information, see https://stripe.com/docs/api#charge_object-amount
+ (i.e. 1000 cents). For more information, see https://stripe.com/docs/api/payment_intents/create#create_payment_intent-amount
 
  @note This value must be present and greater than zero in order for Apple Pay
  to be automatically enabled.
@@ -361,21 +371,21 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)paymentContextDidChange:(STPPaymentContext *)paymentContext;
 
 /**
- Inside this method, you should make a call to your backend API to make a charge with that Customer + source, and invoke the `completion` block when that is done.
+ Inside this method, you should make a call to your backend API to make a PaymentIntent with that Customer + payment method, and invoke the `completion` block when that is done.
 
  @param paymentContext The context that succeeded
- @param paymentResult  Information associated with the payment that you can pass to your server. You should go to your backend API with this payment result and make a charge to complete the payment, passing `paymentResult.source.stripeID` as the `source` parameter to the create charge method and your customer's ID as the `customer` parameter (see stripe.com/docs/api#charge_create for more info). Once that's done call the `completion` block with any error that occurred (or none, if the charge succeeded). @see STPPaymentResult.h
- @param completion     Call this block when you're done creating a charge (or subscription, etc) on your backend. If it succeeded, call `completion(nil)`. If it failed with an error, call `completion(error)`.
+ @param paymentResult  Information associated with the payment that you can pass to your server. You should go to your backend API with this payment result and use the PaymentIntent API to complete the payment. See https://stripe.com/docs/mobile/ios/standard#submit-payment-intents. Once that's done call the `completion` block with any error that occurred (or none, if the payment succeeded). @see STPPaymentResult.h
+ @param completion     Call this block when you're done creating a payment intent (or subscription, etc) on your backend. If it succeeded, call `completion(STPPaymentStatusSuccess, nil)`. If it failed with an error, call `completion(STPPaymentStatusError, error)`. If the user canceled, call `completion(STPPaymentStatusUserCancellation, nil)`.
  */
 - (void)paymentContext:(STPPaymentContext *)paymentContext
 didCreatePaymentResult:(STPPaymentResult *)paymentResult
-            completion:(STPErrorBlock)completion;
+            completion:(STPPaymentStatusBlock)completion;
 
 /**
- This is invoked by an `STPPaymentContext` when it is finished. This will be called after the payment is done and all necessary UI has been dismissed. You should inspect the returned `status` and behave appropriately. For example: if it's `STPPaymentStatusSuccess`, show the user a receipt. If it's `STPPaymentStatusError`, inform the user of the error. If it's `STPPaymentStatusUserCanceled`, do nothing.
+ This is invoked by an `STPPaymentContext` when it is finished. This will be called after the payment is done and all necessary UI has been dismissed. You should inspect the returned `status` and behave appropriately. For example: if it's `STPPaymentStatusSuccess`, show the user a receipt. If it's `STPPaymentStatusError`, inform the user of the error. If it's `STPPaymentStatusUserCancellation`, do nothing.
 
  @param paymentContext The payment context that finished
- @param status         The status of the payment - `STPPaymentStatusSuccess` if it succeeded, `STPPaymentStatusError` if it failed with an error (in which case the `error` parameter will be non-nil), `STPPaymentStatusUserCanceled` if the user canceled the payment.
+ @param status         The status of the payment - `STPPaymentStatusSuccess` if it succeeded, `STPPaymentStatusError` if it failed with an error (in which case the `error` parameter will be non-nil), `STPPaymentStatusUserCancellation` if the user canceled the payment.
  @param error          An error that occurred, if any.
  */
 - (void)paymentContext:(STPPaymentContext *)paymentContext
@@ -383,6 +393,7 @@ didCreatePaymentResult:(STPPaymentResult *)paymentResult
                  error:(nullable NSError *)error;
 
 @optional
+
 /**
  Inside this method, you should verify that you can ship to the given address.
  You should call the completion block with the results of your validation

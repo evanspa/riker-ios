@@ -23,13 +23,53 @@
 
 - (void)clearAdditionalInfo;
 
+#pragma mark - Creation
 - (void)logTokenCreationAttemptWithConfiguration:(STPPaymentConfiguration *)configuration
                                        tokenType:(NSString *)tokenType;
 
 - (void)logSourceCreationAttemptWithConfiguration:(STPPaymentConfiguration *)configuration
                                        sourceType:(NSString *)sourceType;
 
+- (void)logPaymentMethodCreationSucceededWithConfiguration:(STPPaymentConfiguration *)configuration
+                                           paymentMethodID:(NSString *)paymentMethodID;
+
+#pragma mark - Confirmation
+
 - (void)logPaymentIntentConfirmationAttemptWithConfiguration:(STPPaymentConfiguration *)configuration
                                                   sourceType:(NSString *)sourceType;
+
+- (void)logSetupIntentConfirmationAttemptWithConfiguration:(STPPaymentConfiguration *)configuration
+                                         paymentMethodType:(NSString *)paymentMethodType;
+
+#pragma mark - 3DS2 Flow
+
+- (void)log3DS2AuthenticateAttemptWithConfiguration:(STPPaymentConfiguration *)configuration
+                                           intentID:(NSString *)intentID;
+
+- (void)log3DS2FrictionlessFlowWithConfiguration:(STPPaymentConfiguration *)configuration
+                                        intentID:(NSString *)intentID;
+
+- (void)logURLRedirectNextActionWithConfiguration:(STPPaymentConfiguration *)configuration
+                                         intentID:(NSString *)intentID;
+
+- (void)log3DS2ChallengeFlowPresentedWithConfiguration:(STPPaymentConfiguration *)configuration
+                                              intentID:(NSString *)intentID
+                                                uiType:(NSString *)uiType;
+
+- (void)log3DS2ChallengeFlowTimedOutWithConfiguration:(STPPaymentConfiguration *)configuration
+                                             intentID:(NSString *)intentID
+                                               uiType:(NSString *)uiType;
+
+- (void)log3DS2ChallengeFlowUserCanceledWithConfiguration:(STPPaymentConfiguration *)configuration
+                                                 intentID:(NSString *)intentID
+                                                   uiType:(NSString *)uiType;
+
+- (void)log3DS2ChallengeFlowCompletedWithConfiguration:(STPPaymentConfiguration *)configuration
+                                              intentID:(NSString *)intentID
+                                                uiType:(NSString *)uiType;
+
+- (void)log3DS2ChallengeFlowErroredWithConfiguration:(STPPaymentConfiguration *)configuration
+                                            intentID:(NSString *)intentID
+                                     errorDictionary:(NSDictionary *)errorDictionary;
 
 @end

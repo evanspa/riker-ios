@@ -9,10 +9,13 @@
 #import "STPPaymentMethod.h"
 
 #import "NSDictionary+Stripe.h"
+#import "STPImageLibrary.h"
+#import "STPLocalizationUtils.h"
 #import "STPPaymentMethodBillingDetails.h"
 #import "STPPaymentMethodCard.h"
 #import "STPPaymentMethodCardPresent.h"
 #import "STPPaymentMethodiDEAL.h"
+#import "STPPaymentMethodFPX.h"
 
 @interface STPPaymentMethod ()
 
@@ -23,6 +26,7 @@
 @property (nonatomic, strong, nullable, readwrite) STPPaymentMethodBillingDetails *billingDetails;
 @property (nonatomic, strong, nullable, readwrite) STPPaymentMethodCard *card;
 @property (nonatomic, strong, nullable, readwrite) STPPaymentMethodiDEAL *iDEAL;
+@property (nonatomic, strong, nullable, readwrite) STPPaymentMethodFPX *fpx;
 @property (nonatomic, strong, nullable, readwrite) STPPaymentMethodCardPresent *cardPresent;
 @property (nonatomic, copy, nullable, readwrite) NSString *customerId;
 @property (nonatomic, copy, nullable, readwrite) NSDictionary<NSString*, NSString *> *metadata;
@@ -48,6 +52,7 @@
                        [NSString stringWithFormat:@"created = %@", self.created],
                        [NSString stringWithFormat:@"customerId = %@", self.customerId],
                        [NSString stringWithFormat:@"ideal = %@", self.iDEAL],
+                       [NSString stringWithFormat:@"fpx = %@", self.fpx],
                        [NSString stringWithFormat:@"liveMode = %@", self.liveMode ? @"YES" : @"NO"],
                        [NSString stringWithFormat:@"metadata = %@", self.metadata],
                        [NSString stringWithFormat:@"type = %@", [self.allResponseFields stp_stringForKey:@"type"]],
@@ -61,6 +66,7 @@
     return @{
              @"card": @(STPPaymentMethodTypeCard),
              @"ideal": @(STPPaymentMethodTypeiDEAL),
+             @"fpx": @(STPPaymentMethodTypeFPX),
              @"card_present": @(STPPaymentMethodTypeCardPresent),
              };
 }
@@ -111,10 +117,56 @@
     paymentMethod.card = [STPPaymentMethodCard decodedObjectFromAPIResponse:[dict stp_dictionaryForKey:@"card"]];
     paymentMethod.type = [self typeFromString:[dict stp_stringForKey:@"type"]];
     paymentMethod.iDEAL = [STPPaymentMethodiDEAL decodedObjectFromAPIResponse:[dict stp_dictionaryForKey:@"ideal"]];
+    paymentMethod.fpx = [STPPaymentMethodFPX decodedObjectFromAPIResponse:[dict stp_dictionaryForKey:@"fpx"]];
     paymentMethod.cardPresent = [STPPaymentMethodCardPresent decodedObjectFromAPIResponse:[dict stp_dictionaryForKey:@"card_present"]];
     paymentMethod.customerId = [dict stp_stringForKey:@"customer"];
     paymentMethod.metadata = [[dict stp_dictionaryForKey:@"metadata"] stp_dictionaryByRemovingNonStrings];
     return paymentMethod;
+}
+
+#pragma mark - STPPaymentOption
+
+- (UIImage *)image {
+    if (self.type == STPPaymentMethodTypeCard && self.card != nil) {
+        return [STPImageLibrary brandImageForCardBrand:self.card.brand];
+    } else {
+        return [STPImageLibrary brandImageForCardBrand:STPCardBrandUnknown];
+    }
+}
+
+- (UIImage *)templateImage {
+    if (self.type == STPPaymentMethodTypeCard && self.card != nil) {
+        return [STPImageLibrary templatedBrandImageForCardBrand:self.card.brand];
+    } else {
+        return [STPImageLibrary templatedBrandImageForCardBrand:STPCardBrandUnknown];
+    }
+}
+
+- (NSString *)label {
+    switch (self.type) {
+        case STPPaymentMethodTypeCard:
+            if (self.card != nil) {
+                NSString *brand = STPStringFromCardBrand(self.card.brand);
+                return [NSString stringWithFormat:@"%@ %@", brand, self.card.last4];
+            } else {
+                return STPStringFromCardBrand(STPCardBrandUnknown);
+            }
+        case STPPaymentMethodTypeiDEAL:
+            return STPLocalizedString(@"iDEAL", @"Source type brand name");
+        case STPPaymentMethodTypeFPX:
+            if (self.fpx != nil) {
+                return STPStringFromFPXBankBrand(STPFPXBankBrandFromIdentifier(self.fpx.bankIdentifierCode));
+            } else {
+                return STPLocalizedString(@"FPX", @"Payment Method type brand name");
+            }
+        case STPPaymentMethodTypeCardPresent:
+        case STPPaymentMethodTypeUnknown:
+            return STPLocalizedString(@"Unknown", @"Default missing source type label");
+    }
+}
+
+- (BOOL)isReusable {
+    return (self.type == STPPaymentMethodTypeCard);
 }
 
 @end

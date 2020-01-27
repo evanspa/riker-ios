@@ -11,7 +11,6 @@
 #import "STPAPIClient.h"
 #import "STPAddress.h"
 #import "STPBlocks.h"
-#import "STPCardParams.h"
 #import "STPCoreTableViewController.h"
 #import "STPPaymentConfiguration.h"
 #import "STPTheme.h"
@@ -49,11 +48,6 @@ NS_ASSUME_NONNULL_BEGIN
  You can set this property to pre-fill any information you've already collected from your user. @see STPUserInformation.h
  */
 @property (nonatomic, strong, nullable) STPUserInformation *prefilledInformation;
-
-/**
- If you're using the token generated from STPAddCardViewController to make a Managed Account, you should set this property to the currency that account will use. Otherwise, you should leave it empty. For more information, see https://stripe.com/docs/api#create_card_token-card-currency
- */
-@property (nonatomic, copy, nullable) NSString *managedAccountCurrency;
 
 /**
  Provide this view controller with a footer view.
@@ -98,44 +92,22 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addCardViewControllerDidCancel:(STPAddCardViewController *)addCardViewController;
 
 @optional
-/**
- This is called when the user successfully adds a card and Stripe returns a
- card token.
-
- Note: If `createsCardSource` is true, this method will not be called;
- `addCardViewController:didCreateSource:` will be called instead.
-
- You should send the token to your backend to store it on a customer, and then
- call the provided `completion` block when that call is finished. If an error
- occurs while talking to your backend, call `completion(error)`, otherwise,
- dismiss (or pop) the view controller.
-
- @param addCardViewController the view controller that successfully created a token
- @param token                 the Stripe token that was created. @see STPToken
- @param completion            call this callback when you're done sending the token to your backend
- */
-- (void)addCardViewController:(STPAddCardViewController *)addCardViewController
-               didCreateToken:(STPToken *)token
-                   completion:(STPErrorBlock)completion;
 
 /**
  This is called when the user successfully adds a card and Stripe returns a
- card source.
-
- Note: If `createsCardSource` is false, this method will not be called;
- `addCardViewController:didCreateToken:` will be called instead.
-
- You should send the source to your backend to store it on a customer, and then
+ Payment Method.
+ 
+ You should send the PaymentMethod to your backend to store it on a customer, and then
  call the provided `completion` block when that call is finished. If an error
  occurs while talking to your backend, call `completion(error)`, otherwise,
  dismiss (or pop) the view controller.
-
+ 
  @param addCardViewController the view controller that successfully created a token
- @param source                the Stripe source that was created. @see STPSource
+ @param paymentMethod         the Payment Method that was created. @see STPPaymentMethod
  @param completion            call this callback when you're done sending the token to your backend
  */
 - (void)addCardViewController:(STPAddCardViewController *)addCardViewController
-              didCreateSource:(STPSource *)source
+       didCreatePaymentMethod:(STPPaymentMethod *)paymentMethod
                    completion:(STPErrorBlock)completion;
 
 @end

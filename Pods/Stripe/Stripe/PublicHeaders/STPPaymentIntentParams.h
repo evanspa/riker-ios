@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @see https://stripe.com/docs/api#confirm_payment_intent
  */
-@interface STPPaymentIntentParams : NSObject<STPFormEncodable>
+@interface STPPaymentIntentParams : NSObject <NSCopying, STPFormEncodable>
 
 /**
  Initialize this `STPPaymentIntentParams` with a `clientSecret`, which is the only required
@@ -96,6 +96,23 @@ NS_ASSUME_NONNULL_BEGIN
  This should probably be a URL that opens your iOS app.
  */
 @property (nonatomic, copy, nullable) NSString *returnURL;
+
+/**
+ When provided, this property indicates how you intend to use the payment method that your customer provides after the current payment completes.
+ 
+ If applicable, additional authentication may be performed to comply with regional legislation or network rules required to enable the usage of the same payment method for additional payments.
+ 
+ @see STPPaymentIntentSetupFutureUsage for more details on what values you can provide.
+ */
+@property (nonatomic, nullable) NSNumber *setupFutureUsage;
+
+/**
+ A boolean number to indicate whether you intend to use the Stripe SDK's functionality to handle any PaymentIntent next actions.
+ If set to false, STPPaymentIntent.nextAction will only ever contain a redirect url that can be opened in a webview or mobile browser.
+ When set to true, the nextAction may contain information that the Stripe SDK can use to perform native authentication within your
+ app.
+ */
+@property (nonatomic, nullable) NSNumber *useStripeSDK;
 
 /**
  The URL to redirect your customer back to after they authenticate or cancel

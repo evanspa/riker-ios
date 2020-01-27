@@ -9,13 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <PassKit/PassKit.h>
 
+@class STP3DS2AuthenticateResponse;
 @class STPToken;
 @class STPFile;
 @class STPSource;
 @class STPCustomer;
 @protocol STPSourceProtocol;
 @class STPPaymentIntent;
+@class STPSetupIntent;
 @class STPPaymentMethod;
+@class STPIssuingCardPin;
 
 /**
  These values control the labels used in the shipping info collection form.
@@ -77,6 +80,14 @@ typedef void (^STPVoidBlock)(void);
 typedef void (^STPErrorBlock)(NSError * __nullable error);
 
 /**
+ A block that contains a boolean success param and may optionally be called with an error.
+
+ @param success       Whether the task succeeded.
+ @param error         The error that occurred, if any.
+ */
+typedef void (^STPBooleanSuccessBlock)(BOOL success, NSError * __nullable error);
+
+/**
  A callback to be run with a JSON response.
 
  @param jsonResponse  The JSON response, or nil if an error occured.
@@ -117,12 +128,28 @@ typedef void (^STPSourceProtocolCompletionBlock)(id<STPSourceProtocol> __nullabl
 typedef void (^STPPaymentIntentCompletionBlock)(STPPaymentIntent * __nullable paymentIntent, NSError * __nullable error);
 
 /**
+ A callback to be run with a PaymentIntent response from the Stripe API.
+ 
+ @param setupIntent The Stripe SetupIntent from the response. Will be nil if an error occurs. @see STPSetupIntent
+ @param error The error returned from the response, or nil if none occurs. @see StripeError.h for possible values.
+ */
+typedef void (^STPSetupIntentCompletionBlock)(STPSetupIntent * __nullable setupIntent, NSError * __nullable error);
+
+/**
  A callback to be run with a PaymentMethod response from the Stripe API.
  
  @param paymentMethod The Stripe PaymentMethod from the response. Will be nil if an error occurs. @see STPPaymentMethod
  @param error The error returned from the response, or nil if none occurs. @see StripeError.h for possible values.
  */
 typedef void (^STPPaymentMethodCompletionBlock)(STPPaymentMethod * __nullable paymentMethod, NSError * __nullable error);
+
+/**
+ A callback to be run with an array of PaymentMethods response from the Stripe API.
+ 
+ @param paymentMethods An array of PaymentMethod from the response. Will be nil if an error occurs. @see STPPaymentMethod
+ @param error The error returned from the response, or nil if none occurs. @see StripeError.h for possible values.
+ */
+typedef void (^STPPaymentMethodsCompletionBlock)(NSArray<STPPaymentMethod *> *__nullable paymentMethods, NSError * __nullable error);
 
 /**
  A callback to be run with a validation result and shipping methods for a 
@@ -150,3 +177,61 @@ typedef void (^STPFileCompletionBlock)(STPFile * __nullable file, NSError * __nu
  @param error        The error returned from the response, or nil if none occurs.
  */
 typedef void (^STPCustomerCompletionBlock)(STPCustomer * __nullable customer, NSError * __nullable error);
+
+/**
+ An enum representing the success and error states of PIN management
+ */
+typedef NS_ENUM(NSUInteger, STPPinStatus) {
+    /**
+     The verification object was already redeemed
+     */
+    STPPinSuccess,
+    /**
+     The verification object was already redeemed
+     */
+    STPPinErrorVerificationAlreadyRedeemed,
+    /**
+     The one-time code was incorrect
+     */
+    STPPinErrorVerificationCodeIncorrect,
+    /**
+     The verification object was expired
+     */
+    STPPinErrorVerificationExpired,
+    /**
+     The verification object has been attempted too many times
+     */
+    STPPinErrorVerificationTooManyAttempts,
+    /**
+     An error occured while retrieving the ephemeral key
+     */
+    STPPinEphemeralKeyError,
+    /**
+     An unknown error occured
+     */
+    STPPinUnknownError,
+};
+
+/**
+ A callback to be run with a card PIN response from the Stripe API.
+ 
+ @param cardPin The Stripe card PIN from the response. Will be nil if an error occurs. @see STPIssuingCardPin
+ @param status The status to help you sort between different error state, or STPPinSuccess when succesful. @see STPPinStatus for possible values.
+ @param error The error returned from the response, or nil if none occurs. @see StripeError.h for possible values.
+ */
+typedef void (^STPPinCompletionBlock)(STPIssuingCardPin * __nullable cardPin, STPPinStatus status, NSError * __nullable error);
+
+/**
+ A callback to be run with a 3DS2 authenticate response from the Stripe API.
+
+ @param authenticateResponse    The Stripe AuthenticateResponse. Will be nil if an error occurs. @see STP3DS2AuthenticateResponse
+ @param error                   The error returned from the response, or nil if none occurs.
+ */
+typedef void (^STP3DS2AuthenticateCompletionBlock)(STP3DS2AuthenticateResponse * _Nullable authenticateResponse, NSError * _Nullable error);
+
+/**
+ A block called with a payment status and an optional error.
+ 
+ @param error The error that occurred, if any.
+ */
+typedef void (^STPPaymentStatusBlock)(STPPaymentStatus status, NSError * __nullable error);

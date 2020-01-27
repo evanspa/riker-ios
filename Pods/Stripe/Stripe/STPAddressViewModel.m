@@ -26,11 +26,13 @@
 @implementation STPAddressViewModel
 
 @synthesize addressFieldTableViewCountryCode = _addressFieldTableViewCountryCode;
+@synthesize availableCountries = _availableCountries;
 
-- (instancetype)initWithRequiredBillingFields:(STPBillingAddressFields)requiredBillingAddressFields {
+- (instancetype)initWithRequiredBillingFields:(STPBillingAddressFields)requiredBillingAddressFields availableCountries:(NSSet<NSString *> *)availableCountries {
     self = [super init];
     if (self) {
         _isBillingAddress = YES;
+        _availableCountries = [availableCountries copy];
         _requiredBillingAddressFields = requiredBillingAddressFields;
         switch (requiredBillingAddressFields) {
             case STPBillingAddressFieldsNone:
@@ -63,10 +65,11 @@
     return self;
 }
 
-- (instancetype)initWithRequiredShippingFields:(NSSet<STPContactField> *)requiredShippingAddressFields {
+- (instancetype)initWithRequiredShippingFields:(NSSet<STPContactField> *)requiredShippingAddressFields availableCountries:(NSSet<NSString *> *)availableCountries {
     self = [super init];
     if (self) {
         _isBillingAddress = NO;
+        _availableCountries = [availableCountries copy];
         _requiredShippingAddressFields = requiredShippingAddressFields;
         NSMutableArray *cells = [NSMutableArray new];
         if ([requiredShippingAddressFields containsObject:STPContactFieldName]) {
@@ -103,6 +106,13 @@
     return self;
 }
 
+- (instancetype)initWithRequiredBillingFields:(STPBillingAddressFields)requiredBillingAddressFields {
+    return [self initWithRequiredBillingFields:requiredBillingAddressFields availableCountries:nil];
+}
+- (instancetype)initWithRequiredShippingFields:(NSSet<STPContactField> *)requiredShippingAddressFields {
+    return [self initWithRequiredShippingFields:requiredShippingAddressFields availableCountries:nil];
+}
+
 - (void)commonInit {
     _addressFieldTableViewCountryCode = [[NSLocale autoupdatingCurrentLocale] objectForKey:NSLocaleCountryCode];
     [self updatePostalCodeCellIfNecessary];
@@ -117,8 +127,7 @@
                                   ];
             [self.delegate addressViewModel:self addedCellAtIndex:0];
             [self.delegate addressViewModelDidChange:self];
-        }
-        else if (self.containsStateAndPostalFields) {
+        } else if (self.containsStateAndPostalFields) {
             // Add before city
             NSUInteger stateFieldIndex = [self.addressCells indexOfObjectPassingTest:^BOOL(STPAddressFieldTableViewCell * _Nonnull obj, NSUInteger __unused idx, BOOL * _Nonnull __unused stop) {
                 return (obj.type == STPAddressFieldTypeCity);
@@ -135,14 +144,12 @@
                 [self.delegate addressViewModelDidChange:self];
             }
         }
-    }
-    else if (!shouldBeShowingPostalCode && self.showingPostalCodeCell) {
+    } else if (!shouldBeShowingPostalCode && self.showingPostalCodeCell) {
         if (self.isBillingAddress && self.requiredBillingAddressFields == STPBillingAddressFieldsZip) {
             self.addressCells = @[];
             [self.delegate addressViewModel:self removedCellAtIndex:0];
             [self.delegate addressViewModelDidChange:self];
-        }
-        else if (self.containsStateAndPostalFields) {
+        } else if (self.containsStateAndPostalFields) {
             NSUInteger zipFieldIndex = [self.addressCells indexOfObjectPassingTest:^BOOL(STPAddressFieldTableViewCell * _Nonnull obj, NSUInteger __unused idx, BOOL * _Nonnull __unused stop) {
                 return (obj.type == STPAddressFieldTypeZip);
             }];
@@ -162,8 +169,7 @@
 - (BOOL)containsStateAndPostalFields {
     if (self.isBillingAddress) {
         return self.requiredBillingAddressFields == STPBillingAddressFieldsFull;
-    }
-    else {
+    } else {
         return [self.requiredShippingAddressFields containsObject:STPContactFieldPostalAddress];
     }
 }
@@ -198,8 +204,7 @@
     for (STPAddressFieldTableViewCell *cell in self.addressCells) {
         if (cell.type == STPAddressFieldTypeCity) {
             cityCell = cell;
-        }
-        else if (cell.type == STPAddressFieldTypeState) {
+        } else if (cell.type == STPAddressFieldTypeState) {
             stateCell = cell;
         }
     }
@@ -209,8 +214,7 @@
         // Don't auto fill if either have text already
         // Or if neither are non-nil
         return;
-    }
-    else {
+    } else {
         self.geocodeInProgress = YES;
         CLGeocoder *geocoder = [CLGeocoder new];
 
@@ -252,8 +256,7 @@
 - (BOOL)isValid {
     if (self.isBillingAddress) {
         return [self.address containsRequiredFields:self.requiredBillingAddressFields];
-    }
-    else {
+    } else {
         return [self.address containsRequiredShippingAddressFields:self.requiredShippingAddressFields];
     }
 }

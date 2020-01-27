@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <sys/utsname.h>
 
+#import <Stripe/Stripe3DS2.h>
+
 #import "STPAPIClient.h"
 #import "STPAPIClient+ApplePay.h"
 #import "STPAPIClient+Private.h"
@@ -16,20 +18,27 @@
 #import "NSBundle+Stripe_AppName.h"
 #import "NSError+Stripe.h"
 #import "NSMutableURLRequest+Stripe.h"
+#import "STP3DS2AuthenticateResponse.h"
 #import "STPAnalyticsClient.h"
 #import "STPAPIRequest.h"
 #import "STPBankAccount.h"
 #import "STPCard.h"
 #import "STPDispatchFunctions.h"
+#import "STPEmptyStripeResponse.h"
 #import "STPEphemeralKey.h"
 #import "STPFormEncoder.h"
 #import "STPGenericStripeObject.h"
+#import "STPAppInfo.h"
 #import "STPMultipartFormDataEncoder.h"
 #import "STPMultipartFormDataPart.h"
 #import "STPPaymentConfiguration.h"
+#import "STPPaymentMethodListDeserializer.h"
 #import "STPPaymentMethodParams.h"
+#import "STPPaymentMethod+Private.h"
 #import "STPPaymentIntent+Private.h"
 #import "STPPaymentIntentParams.h"
+#import "STPSetupIntent+Private.h"
+#import "STPSetupIntentConfirmParams.h"
 #import "STPSource+Private.h"
 #import "STPSourceParams.h"
 #import "STPSourceParams+Private.h"
@@ -38,29 +47,29 @@
 #import "STPToken.h"
 #import "UIImage+Stripe.h"
 
-#if __has_include("Fabric.h")
-#import "Fabric+FABKits.h"
-#import "FABKitProtocol.h"
-#endif
-
 #ifdef STP_STATIC_LIBRARY_BUILD
 #import "STPCategoryLoader.h"
 #endif
 
-static NSString * const APIVersion = @"2015-10-12";
+static NSString * const APIVersion = @"2019-05-16";
 static NSString * const APIBaseURL = @"https://api.stripe.com/v1";
 static NSString * const APIEndpointToken = @"tokens";
 static NSString * const APIEndpointSources = @"sources";
 static NSString * const APIEndpointCustomers = @"customers";
 static NSString * const FileUploadURL = @"https://uploads.stripe.com/v1/files";
 static NSString * const APIEndpointPaymentIntents = @"payment_intents";
+static NSString * const APIEndpointSetupIntents = @"setup_intents";
 static NSString * const APIEndpointPaymentMethods = @"payment_methods";
+static NSString * const APIEndpoint3DS2 = @"3ds2";
 
 #pragma mark - Stripe
 
 @implementation Stripe
 
+static NSArray<PKPaymentNetwork> *_additionalEnabledApplePayNetworks;
+
 + (void)setDefaultPublishableKey:(NSString *)publishableKey {
+    [STPAPIClient validateKey:publishableKey];
     [STPPaymentConfiguration sharedConfiguration].publishableKey = publishableKey;
 }
 
@@ -72,11 +81,7 @@ static NSString * const APIEndpointPaymentMethods = @"payment_methods";
 
 #pragma mark - STPAPIClient
 
-#if __has_include("Fabric.h")
-@interface STPAPIClient ()<FABKit>
-#else
 @interface STPAPIClient()
-#endif
 
 @property (nonatomic, strong, readwrite) NSMutableDictionary<NSString *,NSObject *> *sourcePollers;
 @property (nonatomic, strong, readwrite) dispatch_queue_t sourcePollersQueue;
@@ -154,7 +159,7 @@ static NSString * const APIEndpointPaymentMethods = @"payment_methods";
 
 - (NSDictionary<NSString *, NSString *> *)defaultHeaders {
     NSMutableDictionary *additionalHeaders = [NSMutableDictionary new];
-    additionalHeaders[@"X-Stripe-User-Agent"] = [self.class stripeUserAgentDetails];
+    additionalHeaders[@"X-Stripe-User-Agent"] = [self.class stripeUserAgentDetailsWithAppInfo:self.appInfo];
     additionalHeaders[@"Stripe-Version"] = APIVersion;
     additionalHeaders[@"Authorization"] = [@"Bearer " stringByAppendingString:self.apiKey ?: @""];
     additionalHeaders[@"Stripe-Account"] = self.stripeAccount;
@@ -162,6 +167,7 @@ static NSString * const APIEndpointPaymentMethods = @"payment_methods";
 }
 
 - (void)setPublishableKey:(NSString *)publishableKey {
+    [self.class validateKey:publishableKey];
     self.configuration.publishableKey = [publishableKey copy];
     self.apiKey = [publishableKey copy];
 }
@@ -192,10 +198,10 @@ static NSString * const APIEndpointPaymentMethods = @"payment_methods";
 #pragma clang diagnostic ignored "-Wunused-variable"
 + (void)validateKey:(NSString *)publishableKey {
     NSCAssert(publishableKey != nil && ![publishableKey isEqualToString:@""],
-              @"You must use a valid publishable key to create a token. For more info, see https://stripe.com/docs/stripe.js");
+              @"You must use a valid publishable key. For more info, see https://stripe.com/docs/keys");
     BOOL secretKey = [publishableKey hasPrefix:@"sk_"];
     NSCAssert(!secretKey,
-              @"You are using a secret key to create a token, instead of the publishable one. For more info, see https://stripe.com/docs/stripe.js");
+              @"You are using a secret key. Use a publishable key instead. For more info, see https://stripe.com/docs/keys");
 #ifndef DEBUG
     if ([publishableKey.lowercaseString hasPrefix:@"pk_test"]) {
         FAUXPAS_IGNORED_IN_METHOD(NSLogUsed);
@@ -208,7 +214,7 @@ static NSString * const APIEndpointPaymentMethods = @"payment_methods";
 }
 #pragma clang diagnostic pop
 
-+ (NSString *)stripeUserAgentDetails {
++ (NSString *)stripeUserAgentDetailsWithAppInfo:(nullable STPAppInfo *)appInfo {
     NSMutableDictionary *details = [@{
         @"lang": @"objective-c",
         @"bindings_version": STPSDKVersion,
@@ -232,39 +238,18 @@ static NSString * const APIEndpointPaymentMethods = @"payment_methods";
     if (vendorIdentifier) {
         details[@"vendor_identifier"] = vendorIdentifier;
     }
+    if (appInfo) {
+        details[@"name"] = appInfo.name;
+        details[@"partner_id"] = appInfo.partnerId;
+        if (appInfo.version) {
+            details[@"version"] = appInfo.version;
+        }
+        if (appInfo.url) {
+            details[@"url"] = appInfo.url;
+        }
+    }
     return [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:[details copy] options:(NSJSONWritingOptions)kNilOptions error:NULL] encoding:NSUTF8StringEncoding];
 }
-
-#pragma mark Fabric
-
-#if __has_include("Fabric.h")
-
-+ (NSString *)bundleIdentifier {
-    return @"com.stripe.stripe-ios";
-}
-
-+ (NSString *)kitDisplayVersion {
-    return STPSDKVersion;
-}
-
-+ (void)initializeIfNeeded {
-    Class fabric = NSClassFromString(@"Fabric");
-    if (fabric) {
-        // The app must be using Fabric, as it exists at runtime. We fetch our default publishable key from Fabric.
-        NSDictionary *fabricConfiguration = [fabric configurationDictionaryForKitClass:[STPAPIClient class]];
-        NSString *publishableKey = fabricConfiguration[@"publishable"];
-        if (!publishableKey) {
-            NSLog(@"Configuration dictionary returned by Fabric was nil, or doesn't have publishableKey. Can't initialize Stripe.");
-            return;
-        }
-        [self validateKey:publishableKey];
-        [Stripe setDefaultPublishableKey:publishableKey];
-    } else {
-        NSCAssert(fabric, @"initializeIfNeeded method called from a project that doesn't have Fabric.");
-    }
-}
-
-#endif
 
 @end
 
@@ -420,7 +405,8 @@ static NSString * const APIEndpointPaymentMethods = @"payment_methods";
     if ((&PKPaymentNetworkDiscover) != NULL) {
         supportedNetworks = [supportedNetworks arrayByAddingObject:PKPaymentNetworkDiscover];
     }
-    return supportedNetworks;
+    
+    return [supportedNetworks arrayByAddingObjectsFromArray:self.additionalEnabledApplePayNetworks];
 }
 
 + (BOOL)deviceSupportsApplePay {
@@ -441,6 +427,34 @@ static NSString * const APIEndpointPaymentMethods = @"payment_methods";
     [paymentRequest setCountryCode:countryCode.uppercaseString];
     [paymentRequest setCurrencyCode:currencyCode.uppercaseString];
     return paymentRequest;
+}
+
++ (void)setJCBPaymentNetworkSupported:(BOOL)JCBPaymentNetworkSupported {
+    if (@available(iOS 10.1, *)) {
+        if (JCBPaymentNetworkSupported && ![self.additionalEnabledApplePayNetworks containsObject:PKPaymentNetworkJCB]) {
+            self.additionalEnabledApplePayNetworks = [self.additionalEnabledApplePayNetworks arrayByAddingObject:PKPaymentNetworkJCB];
+        } else if (!JCBPaymentNetworkSupported) {
+            NSMutableArray<PKPaymentNetwork> *updatedNetworks = [self.additionalEnabledApplePayNetworks mutableCopy];
+            [updatedNetworks removeObject:PKPaymentNetworkJCB];
+            self.additionalEnabledApplePayNetworks = updatedNetworks;
+        }
+    }
+}
+
++ (BOOL)isJCBPaymentNetworkSupported {
+    if (@available(iOS 10.1, *)) {
+        return [self.additionalEnabledApplePayNetworks containsObject:PKPaymentNetworkJCB];
+    } else {
+        return NO;
+    }
+}
+
++ (NSArray<PKPaymentNetwork> *)additionalEnabledApplePayNetworks {
+    return _additionalEnabledApplePayNetworks ?: @[];
+}
+
++ (void)setAdditionalEnabledApplePayNetworks:(NSArray<PKPaymentNetwork> *)additionalEnabledApplePayNetworks {
+    _additionalEnabledApplePayNetworks = [additionalEnabledApplePayNetworks copy];
 }
 
 @end
@@ -549,7 +563,7 @@ static NSString * const APIEndpointPaymentMethods = @"payment_methods";
 
 + (void)addSource:(NSString *)sourceID
 toCustomerUsingKey:(STPEphemeralKey *)ephemeralKey
-       completion:(STPSourceProtocolCompletionBlock)completion {
+       completion:(STPSourceProtocolCompletionBlock)completion { FAUXPAS_IGNORED(UnusedMethod)
     STPAPIClient *client = [self apiClientWithEphemeralKey:ephemeralKey];
     NSString *endpoint = [NSString stringWithFormat:@"%@/%@/%@", APIEndpointCustomers, ephemeralKey.customerID, APIEndpointSources];
     [STPAPIRequest<STPSourceProtocol> postWithAPIClient:client
@@ -561,7 +575,7 @@ toCustomerUsingKey:(STPEphemeralKey *)ephemeralKey
                                              }];
 }
 
-+ (void)deleteSource:(NSString *)sourceID fromCustomerUsingKey:(STPEphemeralKey *)ephemeralKey completion:(STPErrorBlock)completion {
++ (void)deleteSource:(NSString *)sourceID fromCustomerUsingKey:(STPEphemeralKey *)ephemeralKey completion:(STPErrorBlock)completion { FAUXPAS_IGNORED_ON_LINE(UnusedMethod)
     STPAPIClient *client = [self apiClientWithEphemeralKey:ephemeralKey];
     NSString *endpoint = [NSString stringWithFormat:@"%@/%@/%@/%@", APIEndpointCustomers, ephemeralKey.customerID, APIEndpointSources, sourceID];
     [STPAPIRequest<STPSourceProtocol> deleteWithAPIClient:client
@@ -571,6 +585,92 @@ toCustomerUsingKey:(STPEphemeralKey *)ephemeralKey
                                                completion:^(__unused STPGenericStripeObject *object, __unused NSHTTPURLResponse *response, NSError *error) {
                                                    completion(error);
                                                }];
+}
+
++ (void)attachPaymentMethod:(NSString *)paymentMethodID toCustomerUsingKey:(STPEphemeralKey *)ephemeralKey completion:(STPErrorBlock)completion {
+    STPAPIClient *client = [self apiClientWithEphemeralKey:ephemeralKey];
+    NSString *endpoint = [NSString stringWithFormat:@"%@/%@/attach", APIEndpointPaymentMethods, paymentMethodID];
+    [STPAPIRequest<STPPaymentMethod *> postWithAPIClient:client
+                                                endpoint:endpoint
+                                              parameters:@{@"customer": ephemeralKey.customerID}
+                                            deserializer:[STPPaymentMethod new]
+                                              completion:^(__unused STPPaymentMethod *paymentMethod, __unused NSHTTPURLResponse *response, NSError *error) {
+                                                  completion(error);
+                                              }];
+}
+
++ (void)detachPaymentMethod:(NSString *)paymentMethodID fromCustomerUsingKey:(STPEphemeralKey *)ephemeralKey completion:(STPErrorBlock)completion {
+    STPAPIClient *client = [self apiClientWithEphemeralKey:ephemeralKey];
+    NSString *endpoint = [NSString stringWithFormat:@"%@/%@/detach", APIEndpointPaymentMethods, paymentMethodID];
+    [STPAPIRequest<STPPaymentMethod *> postWithAPIClient:client
+                                                endpoint:endpoint
+                                              parameters:nil
+                                            deserializer:[STPPaymentMethod new]
+                                              completion:^(__unused STPPaymentMethod *paymentMethod, __unused NSHTTPURLResponse *response, NSError *error) {
+                                                  completion(error);
+                                              }];
+}
+
++ (void)listPaymentMethodsForCustomerUsingKey:(STPEphemeralKey *)ephemeralKey completion:(STPPaymentMethodsCompletionBlock)completion {
+    STPAPIClient *client = [self apiClientWithEphemeralKey:ephemeralKey];
+    NSDictionary *params = @{
+                             @"customer": ephemeralKey.customerID,
+                             @"type": [STPPaymentMethod stringFromType:STPPaymentMethodTypeCard],
+                             };
+    [STPAPIRequest<STPPaymentMethodListDeserializer *> getWithAPIClient:client
+                                                          endpoint:APIEndpointPaymentMethods
+                                                        parameters:params
+                                                      deserializer:[STPPaymentMethodListDeserializer new]
+                                                        completion:^(STPPaymentMethodListDeserializer *deserializer, __unused NSHTTPURLResponse *response, NSError *error) {
+                                                            completion(deserializer.paymentMethods, error);
+                                                        }];
+}
+
+@end
+
+#pragma mark - ThreeDS2
+
+@implementation STPAPIClient (ThreeDS2)
+
+- (void)authenticate3DS2:(STDSAuthenticationRequestParameters *)authRequestParams
+        sourceIdentifier:(NSString *)sourceID
+               returnURL:(nullable NSString *)returnURLString
+              maxTimeout:(NSInteger)maxTimeout
+              completion:(STP3DS2AuthenticateCompletionBlock)completion {
+    NSString *endpoint = [NSString stringWithFormat:@"%@/authenticate", APIEndpoint3DS2];
+
+    NSMutableDictionary *appParams = [[STDSJSONEncoder dictionaryForObject:authRequestParams] mutableCopy];
+    appParams[@"deviceRenderOptions"] = @{@"sdkInterface": @"03",
+                                          @"sdkUiType": @[@"01", @"02", @"03", @"04", @"05"],
+                                          };
+    appParams[@"sdkMaxTimeout"] = [NSString stringWithFormat:@"%02ld", (long)maxTimeout];
+    NSData *appData = [NSJSONSerialization dataWithJSONObject:appParams options:NSJSONWritingPrettyPrinted error:NULL];
+
+    NSMutableDictionary *params = [@{@"app": [[NSString alloc] initWithData:appData encoding:NSUTF8StringEncoding],
+                                    @"source": sourceID,
+                                     } mutableCopy];
+    if (returnURLString != nil) {
+        params[@"fallback_return_url"] = returnURLString;
+    }
+
+     [STPAPIRequest<STP3DS2AuthenticateResponse *> postWithAPIClient:self
+                                                            endpoint:endpoint
+                                                          parameters:[params copy]
+                                                        deserializer:[STP3DS2AuthenticateResponse new]
+                                                          completion:^(STP3DS2AuthenticateResponse *authenticateResponse, __unused NSHTTPURLResponse *response, NSError *error) {
+                                                              completion(authenticateResponse, error);
+                                                          }];
+}
+
+- (void)complete3DS2AuthenticationForSource:(NSString *)sourceID completion:(STPBooleanSuccessBlock)completion {
+
+    [STPAPIRequest<STPEmptyStripeResponse *> postWithAPIClient:self
+                                                      endpoint:[NSString stringWithFormat:@"%@/challenge_complete", APIEndpoint3DS2]
+                                                    parameters:@{ @"source": sourceID }
+                                                  deserializer:[STPEmptyStripeResponse new]
+                                                    completion:^(__unused STPEmptyStripeResponse *emptyResponse, NSHTTPURLResponse *response, NSError *responseError) {
+                                                        completion(response.statusCode == 200, responseError);
+                                                    }];
 }
 
 @end
@@ -624,6 +724,49 @@ toCustomerUsingKey:(STPEphemeralKey *)ephemeralKey
 
 @end
 
+#pragma mark - Setup Intents
+
+@implementation STPAPIClient (SetupIntents)
+
+- (void)retrieveSetupIntentWithClientSecret:(NSString *)secret
+                                   completion:(STPSetupIntentCompletionBlock)completion {
+    NSCAssert(secret != nil, @"'secret' is required to retrieve a SetupIntent");
+    NSCAssert(completion != nil, @"'completion' is required to use the SetupIntent that is retrieved");
+    NSString *identifier = [STPSetupIntent idFromClientSecret:secret];
+    
+    NSString *endpoint = [NSString stringWithFormat:@"%@/%@", APIEndpointSetupIntents, identifier];
+    
+    [STPAPIRequest<STPSetupIntent *> getWithAPIClient:self
+                                               endpoint:endpoint
+                                             parameters:@{ @"client_secret": secret }
+                                           deserializer:[STPSetupIntent new]
+                                             completion:^(STPSetupIntent *setupIntent, __unused NSHTTPURLResponse *response, NSError *error) {
+                                                 completion(setupIntent, error);
+                                             }];
+}
+
+- (void)confirmSetupIntentWithParams:(STPSetupIntentConfirmParams *)setupIntentParams
+                            completion:(STPSetupIntentCompletionBlock)completion {
+    NSCAssert(setupIntentParams.clientSecret != nil, @"'clientSecret' is required to confirm a SetupIntent");
+
+    NSString *paymentMethodType = [STPPaymentMethod stringFromType:setupIntentParams.paymentMethodParams.type];
+    [[STPAnalyticsClient sharedClient] logSetupIntentConfirmationAttemptWithConfiguration:self.configuration
+                                                                        paymentMethodType:paymentMethodType];
+
+    NSString *identifier = [STPSetupIntent idFromClientSecret:setupIntentParams.clientSecret];
+    NSString *endpoint = [NSString stringWithFormat:@"%@/%@/confirm", APIEndpointSetupIntents, identifier];
+    NSDictionary *params = [STPFormEncoder dictionaryForObject:setupIntentParams];
+    [STPAPIRequest<STPSetupIntent *> postWithAPIClient:self
+                                                endpoint:endpoint
+                                              parameters:params
+                                            deserializer:[STPSetupIntent new]
+                                              completion:^(STPSetupIntent *setupIntent, __unused NSHTTPURLResponse *response, NSError *error) {
+                                                  completion(setupIntent, error);
+                                              }];
+}
+
+@end
+
 #pragma mark - Payment Methods
 
 @implementation STPAPIClient (PaymentMethods)
@@ -631,12 +774,15 @@ toCustomerUsingKey:(STPEphemeralKey *)ephemeralKey
 - (void)createPaymentMethodWithParams:(STPPaymentMethodParams *)paymentMethodParams
                                  completion:(STPPaymentMethodCompletionBlock)completion {
     NSCAssert(paymentMethodParams != nil, @"'paymentMethodParams' is required to create a PaymentMethod");
-    
+    NSCAssert(paymentMethodParams.rawTypeString != nil, @"Set the `type` or `rawTypeString` property on paymentMethodParams.");
     [STPAPIRequest<STPPaymentMethod *> postWithAPIClient:self
                                                endpoint:APIEndpointPaymentMethods
                                              parameters:[STPFormEncoder dictionaryForObject:paymentMethodParams]
                                            deserializer:[STPPaymentMethod new]
                                              completion:^(STPPaymentMethod *paymentMethod, __unused NSHTTPURLResponse *response, NSError *error) {
+                                                 if (error == nil && paymentMethod != nil) {
+                                                     [[STPAnalyticsClient sharedClient] logPaymentMethodCreationSucceededWithConfiguration:self.configuration paymentMethodID:paymentMethod.stripeId];
+                                                 }
                                                  completion(paymentMethod, error);
                                              }];
 

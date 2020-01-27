@@ -7138,7 +7138,7 @@ writeUserReadonlyFields:(BOOL)writeUserReadonlyFields
                        db:db
                     error:errorBlk];
       NSNumber *dataSetLocalId = [NSNumber numberWithLongLong:[db lastInsertRowId]];
-      NSArray *chartDataEntryValues = dataSet.values;
+      NSArray *chartDataEntryValues = dataSet.entries;
       NSInteger numValues = chartDataEntryValues.count;
       for (int j = 0; j < numValues; j++) {
         ChartDataEntry *dataEntry = chartDataEntryValues[j];
@@ -7208,7 +7208,6 @@ writeUserReadonlyFields:(BOOL)writeUserReadonlyFields
       }
       [rs close];
       for (LineChartDataSet *dataSet in dataSets) {
-        NSMutableArray *dataPoints = [NSMutableArray array];
         rs = [PELMUtils doQuery:[NSString stringWithFormat:@"select %@, %@ from %@ where %@ = ? order by %@ asc",
                                  COL_CHART_TIME_SERIES_DATA_POINT_DATE,
                                  COL_CHART_TIME_SERIES_DATA_POINT_VALUE,
@@ -7219,11 +7218,10 @@ writeUserReadonlyFields:(BOOL)writeUserReadonlyFields
                              db:db
                           error:errorBlk];
         while ([rs next]) {
-          [dataPoints addObject:[[ChartDataEntry alloc] initWithX:[rs doubleForColumn:COL_CHART_TIME_SERIES_DATA_POINT_DATE]
-                                                                y:[rs doubleForColumn:COL_CHART_TIME_SERIES_DATA_POINT_VALUE]]];
+          [dataSet addEntry:[[ChartDataEntry alloc] initWithX:[rs doubleForColumn:COL_CHART_TIME_SERIES_DATA_POINT_DATE]
+                                                            y:[rs doubleForColumn:COL_CHART_TIME_SERIES_DATA_POINT_VALUE]]];
         }
-        [rs close];
-        [dataSet setValues:dataPoints];
+        [rs close];        
       }
       [lineChartDataCache.lineChartData setDataSets:dataSets];
     }

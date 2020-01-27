@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "STPCard.h"
+#import "STPPaymentMethodCard.h"
 
-@class STPPaymentCardTextField;
+@class STPPaymentCardTextField, STPPaymentMethodCardParams;
 @protocol STPPaymentCardTextFieldDelegate;
 
 /**
@@ -36,7 +36,7 @@ IB_DESIGNABLE
 @property (nonatomic, copy, null_resettable) UIFont *font UI_APPEARANCE_SELECTOR;
 
 /**
- The text color to be used when entering valid text. Default is [UIColor blackColor]. 
+ The text color to be used when entering valid text. Default is [UIColor labelColor].
  
  Set this property to nil to reset to the default.
  */
@@ -55,7 +55,7 @@ IB_DESIGNABLE
 
  This will also set the color of the card placeholder icon.
 
- Default is [UIColor lightGrayColor]. Set this property to nil to reset to the default.
+ Default is [UIColor systemGray2Color]. Set this property to nil to reset to the default.
  */
 @property (nonatomic, copy, null_resettable) UIColor *placeholderColor UI_APPEARANCE_SELECTOR;
 
@@ -98,7 +98,7 @@ IB_DESIGNABLE
  
  Can be nil (in which case no border will be drawn).
 
- Default is [UIColor lightGrayColor].
+ Default is [UIColor systemGray2Color].
  */
 @property (nonatomic, copy, nullable) UIColor *borderColor UI_APPEARANCE_SELECTOR;
 
@@ -231,16 +231,16 @@ The curent brand image displayed in the receiver.
 @property (nonatomic, copy, nullable) NSString *countryCode;
 
 /**
- Convenience property for creating an STPCardParams from the currently entered information
+ Convenience property for creating an `STPPaymentMethodCardParams` from the currently entered information
  or programmatically setting the field's contents. For example, if you're using another library
- to scan your user's credit card with a camera, you can assemble that data into an STPCardParams
+ to scan your user's credit card with a camera, you can assemble that data into an `STPPaymentMethodCardParams`
  object and set this property to that object to prefill the fields you've collected.
 
  Accessing this property returns a *copied* `cardParams`. The only way to change properties in this
- object is to make changes to a STPCardParams you own (retrieved from this text field if desired),
+ object is to make changes to a `STPPaymentMethodCardParams` you own (retrieved from this text field if desired),
  and then set this property to the new value.
  */
-@property (nonatomic, copy, readwrite, nonnull) STPCardParams *cardParams;
+@property (nonatomic, copy, readwrite, nonnull) STPPaymentMethodCardParams *cardParams;
 
 /**
  Causes the text field to begin editing. Presents the keyboard.

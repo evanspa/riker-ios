@@ -1194,6 +1194,7 @@ alignmentRelativeToView:(UIView *)alignmentRelativeToView
   UINavigationController *navCtrl =
     [[UINavigationController alloc] initWithRootViewController:viewController];
   [navCtrl setNavigationBarHidden:navigationBarHidden];
+  [navCtrl setModalPresentationStyle:UIModalPresentationFullScreen];
   return navCtrl;
 }
 

@@ -46,7 +46,6 @@
         _shippingType = STPShippingTypeShipping;
         _companyName = [NSBundle stp_applicationName];
         _canDeletePaymentOptions = YES;
-        _createCardSources = NO;
     }
     return self;
 }
@@ -57,6 +56,18 @@
     [Stripe deviceSupportsApplePay];
 }
 
+- (NSSet<NSString *> *)availableCountries {
+    if (_availableCountries == nil) {
+        return [NSSet setWithArray:[NSLocale ISOCountryCodes]];
+    } else {
+        return _availableCountries;
+    }
+}
+
+- (NSSet<NSString *> *)_availableCountries {
+    return _availableCountries;
+}
+
 #pragma mark - Description
 
 - (NSString *)description {
@@ -64,11 +75,9 @@
 
     if (self.additionalPaymentOptions == STPPaymentOptionTypeAll) {
         additionalPaymentOptionsDescription = @"STPPaymentOptionTypeAll";
-    }
-    else if (self.additionalPaymentOptions == STPPaymentOptionTypeNone) {
+    } else if (self.additionalPaymentOptions == STPPaymentOptionTypeNone) {
         additionalPaymentOptionsDescription = @"STPPaymentOptionTypeNone";
-    }
-    else {
+    } else {
         NSMutableArray *paymentOptions = [[NSMutableArray alloc] init];
 
         if (self.additionalPaymentOptions & STPPaymentOptionTypeApplePay) {
@@ -121,6 +130,7 @@
                        [NSString stringWithFormat:@"requiredShippingAddressFields = %@", requiredShippingAddressFieldsDescription],
                        [NSString stringWithFormat:@"verifyPrefilledShippingAddress = %@", (self.verifyPrefilledShippingAddress) ? @"YES" : @"NO"],
                        [NSString stringWithFormat:@"shippingType = %@", shippingTypeDescription],
+                       [NSString stringWithFormat:@"availableCountries = %@", _availableCountries],
 
                        // Additional configuration
                        [NSString stringWithFormat:@"companyName = %@", self.companyName],
@@ -144,6 +154,7 @@
     copy.companyName = self.companyName;
     copy.appleMerchantIdentifier = self.appleMerchantIdentifier;
     copy.canDeletePaymentOptions = self.canDeletePaymentOptions;
+    copy.availableCountries = _availableCountries;
     return copy;
 }
 

@@ -17,12 +17,10 @@
 #import "STPImageLibrary.h"
 #import "STPImageLibrary+Private.h"
 #import "STPLocalizationUtils.h"
+#import "STPPaymentMethod.h"
 #import "STPPaymentOptionTableViewCell.h"
 #import "STPPaymentOptionTuple.h"
 #import "STPPromise.h"
-#import "STPSource.h"
-#import "STPSourceProtocol.h"
-#import "STPToken.h"
 #import "UITableViewCell+Stripe_Borders.h"
 #import "UIViewController+Stripe_NavigationItemProxy.h"
 #import "UIViewController+Stripe_Promises.h"
@@ -65,7 +63,6 @@ static NSInteger const PaymentOptionSectionAddCard = 1;
         _paymentOptions = tuple.paymentOptions;
         _selectedPaymentOption = tuple.selectedPaymentOption;
         _delegate = delegate;
-        _createsCardSources = NO;
 
         self.title = STPLocalizedString(@"Payment Method", @"Title for Payment Method screen");
     }
@@ -116,13 +113,11 @@ static NSInteger const PaymentOptionSectionAddCard = 1;
         if ([self isAnyPaymentOptionDetachable]) {
             // Show edit button
             barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(handleEditButtonTapped:)];
-        }
-        else {
+        } else {
             // Show no button
             barButtonItem = nil;
         }
-    }
-    else {
+    } else {
         // Show done button
         barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(handleDoneButtonTapped:)];
     }
@@ -151,9 +146,9 @@ static NSInteger const PaymentOptionSectionAddCard = 1;
         return NO;
     }
 
-    if (![self.apiAdapter respondsToSelector:@selector(detachSourceFromCustomer:completion:)]) {
+    if (![self.apiAdapter respondsToSelector:@selector(detachPaymentMethodFromCustomer:completion:)]) {
         // Cannot detach payment methods if customerContext is an apiAdapter
-        // that doesn't implement detachSource
+        // that doesn't implement detachPaymentMethod
         return NO;
     }
 
@@ -162,8 +157,8 @@ static NSInteger const PaymentOptionSectionAddCard = 1;
         return NO;
     }
 
-    if (![paymentOption conformsToProtocol:@protocol(STPSourceProtocol)]) {
-        // Cannot detach non-source payment method
+    if (![paymentOption isKindOfClass:[STPPaymentMethod class]]) {
+        // Cannot detach non-payment method
         return NO;
     }
 
@@ -241,8 +236,7 @@ static NSInteger const PaymentOptionSectionAddCard = 1;
         BOOL selected = [paymentOption isEqual:self.selectedPaymentOption];
 
         [cell configureWithPaymentOption:paymentOption theme:self.theme selected:selected];
-    }
-    else {
+    } else {
         [cell configureForNewCardRowWithTheme:self.theme];
         cell.accessibilityIdentifier = @"PaymentOptionsTableViewAddNewCardButtonIdentifier";
     }
@@ -284,16 +278,10 @@ static NSInteger const PaymentOptionSectionAddCard = 1;
             return;
         }
 
-        if (![paymentOptionToDelete conformsToProtocol:@protocol(STPSourceProtocol)]) {
-            // Showed the user a delete option for a payment method when we shouldn't have
-            [tableView reloadData];
-            return;
-        }
+        STPPaymentMethod *paymentMethod = (STPPaymentMethod *)paymentOptionToDelete;
 
-        id<STPSourceProtocol> source = (id<STPSourceProtocol>)paymentOptionToDelete;
-
-        // Kickoff request to delete source from customer
-        [self.apiAdapter detachSourceFromCustomer:source completion:nil];
+        // Kickoff request to delete payment method from customer
+        [self.apiAdapter detachPaymentMethodFromCustomer:paymentMethod completion:nil];
 
         // Optimistically remove payment method from data source
         NSMutableArray *paymentOptions = [self.paymentOptions mutableCopy];
@@ -337,12 +325,12 @@ static NSInteger const PaymentOptionSectionAddCard = 1;
 
         // Notify delegate
         [self.delegate internalViewControllerDidSelectPaymentOption:paymentOption];
-    }
-    else if (indexPath.section == PaymentOptionSectionAddCard) {
+    } else if (indexPath.section == PaymentOptionSectionAddCard) {
         STPAddCardViewController *paymentCardViewController = [[STPAddCardViewController alloc] initWithConfiguration:self.configuration theme:self.theme];
         paymentCardViewController.delegate = self;
         paymentCardViewController.prefilledInformation = self.prefilledInformation;
         paymentCardViewController.shippingAddress = self.shippingAddress;
+        paymentCardViewController.customFooterView = self.addCardViewControllerCustomFooterView;
 
         [self.navigationController pushViewController:paymentCardViewController animated:YES];
     }
@@ -395,12 +383,8 @@ static NSInteger const PaymentOptionSectionAddCard = 1;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)addCardViewController:(__unused STPAddCardViewController *)addCardViewController didCreateToken:(STPToken *)token completion:(STPErrorBlock)completion {
-    [self.delegate internalViewControllerDidCreateSource:token completion:completion];
-}
-
-- (void)addCardViewController:(__unused STPAddCardViewController *)addCardViewController didCreateSource:(STPSource *)source completion:(STPErrorBlock)completion {
-    [self.delegate internalViewControllerDidCreateSource:source completion:completion];
+- (void)addCardViewController:(__unused STPAddCardViewController *)addCardViewController didCreatePaymentMethod:(nonnull STPPaymentMethod *)paymentMethod completion:(nonnull STPErrorBlock)completion {
+    [self.delegate internalViewControllerDidCreatePaymentMethod:paymentMethod completion:completion];
 }
 
 @end

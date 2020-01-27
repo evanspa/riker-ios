@@ -840,7 +840,7 @@ alignmentRelativeToView:chartCardPanel
             [dataEntries addObject:dataEntry];
           }
         }
-        PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:dataEntries label:nil];
+        PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithEntries:dataEntries label:nil];
         dataSet.colors = colorScheme;
         if (chartConfig.suppressPieSliceLabels) {
           dataSet.drawValuesEnabled = NO;
@@ -1001,7 +1001,7 @@ alignmentRelativeToView:chartCardPanel
     dataSet.drawCircleHoleEnabled = YES;
     dataSet.circleRadius = 5.5;
   } else if (dataEntriesCount > 0) { // one
-    ChartDataEntry *chartDataEntry = dataSet.values[0];
+    ChartDataEntry *chartDataEntry = dataSet.entries[0];
     if (chartDataEntry.y > 0.0) {
       dataSet.drawCircleHoleEnabled = YES;
       dataSet.circleRadius = 6.0;
@@ -1234,7 +1234,7 @@ alignmentRelativeToView:chartCardPanel
                 [lineChartDataEntries addObject:chartDataEntry];
               }
             }
-            LineChartDataSet *dataSet = [[LineChartDataSet alloc] initWithValues:lineChartDataEntries label:label];
+            LineChartDataSet *dataSet = [[LineChartDataSet alloc] initWithEntries:lineChartDataEntries label:label];
             dataSet.entityLocalMasterIdentifier = entityLocalMasterIdentifier;
             if (!headless) {
               [self configureDataSet:dataSet lineColor:lineColor lineWidth:lineWidth];

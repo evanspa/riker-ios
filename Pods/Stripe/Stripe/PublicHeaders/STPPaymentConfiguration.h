@@ -46,10 +46,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  The billing address fields the user must fill out when prompted for their 
- payment details. These fields will all be present on the returned token from 
+ payment details. These fields will all be present on the returned PaymentMethod from
  Stripe.
  
- @see https://stripe.com/docs/api#create_card_token
+ @see https://stripe.com/docs/api/payment_methods/create#create_payment_method-billing_details
  */
 @property (nonatomic, assign, readwrite) STPBillingAddressFields requiredBillingAddressFields;
 
@@ -76,6 +76,15 @@ NS_ASSUME_NONNULL_BEGIN
  The default value is STPShippingTypeShipping.
  */
 @property (nonatomic, assign, readwrite) STPShippingType shippingType;
+
+/**
+ The set of countries supported when entering an address. This property accepts
+ a set of ISO 2-character country codes.
+
+ The default value is all known countries. Setting this property will limit
+ the available countries to your selected set.
+ */
+@property (nonatomic, copy, null_resettable, readwrite) NSSet<NSString *> *availableCountries;
 
 /**
  The name of your company, for displaying to the user during payment flows. For 
@@ -110,20 +119,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readwrite) BOOL canDeletePaymentOptions;
 
 /**
- If the value of this property is true, when your user adds a card in our UI,
- a card source will be created and added to their Stripe Customer. The default
- value is false.
-
- @see https://stripe.com/docs/sources/cards#create-source
- */
-@property (nonatomic, assign) BOOL createCardSources;
-
-/**
  In order to perform API requests on behalf of a connected account, e.g. to
- create a source on a connected account, set this property to the ID of the
+ create charges for a connected account, set this property to the ID of the
  account for which this request is being made.
 
- @see https://stripe.com/docs/connect/authentication#authentication-via-the-stripe-account-header
+ @see https://stripe.com/docs/payments/payment-intents/use-cases#connected-accounts
  */
 @property (nonatomic, copy, nullable) NSString *stripeAccount;
 

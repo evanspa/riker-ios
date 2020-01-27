@@ -186,7 +186,7 @@ NSInteger const kAccountStatusPanelTag = 12;
 
 - (FBSDKLoginButton *)facebookLoginButton {
   FBSDKLoginButton *facebookLoginButton = [[FBSDKLoginButton alloc] init];
-  facebookLoginButton.readPermissions = @[@"email"];
+  //facebookLoginButton.readPermissions = @[@"email"];
   [facebookLoginButton.titleLabel setFont:[PEUIUtils actionButtonFont]];
   return facebookLoginButton;
 }

@@ -46,8 +46,7 @@
             formTextField.preservesContentsOnPaste = NO;
             formTextField.selectionEnabled = NO;
             textField = formTextField;
-        }
-        else {
+        } else {
             textField = [[STPValidatedTextField alloc] init];
         }
         textField.delegate = self;
@@ -69,9 +68,18 @@
         _inputAccessoryToolbar = toolbar;
         
         NSString *countryCode = [[NSLocale autoupdatingCurrentLocale] objectForKey:NSLocaleCountryCode];
-        NSMutableArray *otherCountryCodes = [[NSLocale ISOCountryCodes] mutableCopy];
+        NSMutableArray *otherCountryCodes = [[self.delegate.availableCountries allObjects] mutableCopy];
+        if (otherCountryCodes == nil) {            
+            otherCountryCodes = [[NSLocale ISOCountryCodes] mutableCopy];
+        }
+        if ([otherCountryCodes containsObject:countryCode]) {
+            // Remove the current country code to re-add it once we sort the list.
+            [otherCountryCodes removeObject:countryCode];
+        } else {
+            // If it isn't in the list (if we've been configured to not show that country), don't re-add it.
+            countryCode = nil;
+        }
         NSLocale *locale = [NSLocale currentLocale];
-        [otherCountryCodes removeObject:countryCode];
         [otherCountryCodes sortUsingComparator:^NSComparisonResult(NSString *code1, NSString *code2) {
             NSString *localeID1 = [NSLocale localeIdentifierFromComponents:@{NSLocaleCountryCode: code1}];
             NSString *localeID2 = [NSLocale localeIdentifierFromComponents:@{NSLocaleCountryCode: code2}];
@@ -81,8 +89,7 @@
         }];
         if (countryCode) {
            _countryCodes = [@[@"", countryCode] arrayByAddingObjectsFromArray:otherCountryCodes];
-        }
-        else {
+        } else {
            _countryCodes = [@[@""] arrayByAddingObjectsFromArray:otherCountryCodes];
         }
         UIPickerView *pickerView = [UIPickerView new];
@@ -122,8 +129,7 @@
     self.textField.placeholder = [self placeholderForAddressField:self.type];
     if (!self.lastInList) {
         self.textField.returnKeyType = UIReturnKeyNext;
-    }
-    else {
+    } else {
         self.textField.returnKeyType = UIReturnKeyDefault;
     }
     switch (self.type) {
@@ -170,8 +176,7 @@
 
             if (!self.lastInList) {
                 self.textField.inputAccessoryView = self.inputAccessoryToolbar;
-            }
-            else {
+            } else {
                 self.textField.inputAccessoryView = nil;
             }
             break;
@@ -179,11 +184,15 @@
             self.textField.keyboardType = UIKeyboardTypeDefault;
             // Don't set textContentType for Country, because we don't want iOS to skip the UIPickerView for input
             self.textField.inputView = self.countryPickerView;
+            
+            // If we're being set directly to a country we don't allow, add it to the allowed list
+            if (![self.countryCodes containsObject:self.contents] && [[NSLocale ISOCountryCodes] containsObject:self.contents]) {
+                self.countryCodes = [self.countryCodes arrayByAddingObject:self.contents];
+            }
             NSInteger index = [self.countryCodes indexOfObject:self.contents];
             if (index == NSNotFound) {
                 self.textField.text = @"";
-            }
-            else {
+            } else {
                 [self.countryPickerView selectRow:index inComponent:0 animated:NO];
                 self.textField.text = [self pickerView:self.countryPickerView titleForRow:index forComponent:0];
             }
@@ -200,8 +209,7 @@
             ((STPFormTextField *)self.textField).autoFormattingBehavior = behavior;
             if (!self.lastInList) {
                 self.textField.inputAccessoryView = self.inputAccessoryToolbar;
-            }
-            else {
+            } else {
                 self.textField.inputAccessoryView = nil;
             }
             break;
@@ -245,14 +253,11 @@
 + (NSString *)stateFieldCaptionForCountryCode:(NSString *)countryCode {
     if ([countryCode isEqualToString:@"US"]) {
         return STPLocalizedString(@"State", @"Caption for State field on address form (only countries that use state , like United States)");
-    }
-    else if ([countryCode isEqualToString:@"CA"]) {
+    } else if ([countryCode isEqualToString:@"CA"]) {
         return STPLocalizedString(@"Province", @"Caption for Province field on address form (only countries that use province, like Canada)");
-    }
-    else if ([countryCode isEqualToString:@"GB"]) {
+    } else if ([countryCode isEqualToString:@"GB"]) {
         return STPLocalizedString(@"County", @"Caption for County field on address form (only countries that use county, like United Kingdom)");
-    }
-    else  {
+    } else  {
         return STPLocalizedString(@"State / Province / Region", @"Caption for generalized state/province/region field on address form (not tied to a specific country's format)");
     }
 }
@@ -322,6 +327,18 @@
     if ([self.delegate respondsToSelector:@selector(addressFieldTableViewCellDidReturn:)]) {
         [self.delegate addressFieldTableViewCellDidReturn:self];
     }
+}
+
+- (NSInteger)accessibilityElementCount {
+    return 1;
+}
+
+- (id)accessibilityElementAtIndex:(__unused NSInteger)index {
+    return self.textField;
+}
+
+- (NSInteger)indexOfAccessibilityElement:(__unused id)element {
+    return 0;
 }
 
 #pragma mark - UITextFieldDelegate

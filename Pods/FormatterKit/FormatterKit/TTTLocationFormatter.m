@@ -1,6 +1,6 @@
 // TTTLocationFormatter.m
 //
-// Copyright (c) 2011–2015 Mattt Thompson (http://mattt.me)
+// Copyright (c) 2011–2019 Mattt (https://mat.tt)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -64,6 +64,8 @@ static inline void TTTGetDegreesMinutesSecondsFromCoordinateDegrees(CLLocationDe
     r = *m - floor(*m);
 
     *s = 60.0 * r;
+
+    *d = fabs(*d);
 }
 
 static inline void TTTGetCardinalDirectionsFromCoordinate(CLLocationCoordinate2D coordinate, TTTLocationCardinalDirection *latitudeDirection, TTTLocationCardinalDirection *longitudeDirection) {
@@ -204,8 +206,6 @@ static NSString * TTTLocalizedStringForAbbreviatedCardinalDirection(TTTLocationC
     _numberFormatter = [[NSNumberFormatter alloc] init];
     [_numberFormatter setLocale:[NSLocale currentLocale]];
     [_numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    [_numberFormatter setMaximumSignificantDigits:2];
-    [_numberFormatter setUsesSignificantDigits:YES];
 
     return self;
 }

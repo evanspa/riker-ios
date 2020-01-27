@@ -44,11 +44,13 @@
                        [NSString stringWithFormat:@"receiptEmail = %@", self.receiptEmail],
                        [NSString stringWithFormat:@"returnURL = %@", self.returnURL],
                        [NSString stringWithFormat:@"savePaymentMethod = %@", (self.savePaymentMethod.boolValue) ? @"YES" : @"NO"],
-
+                       [NSString stringWithFormat:@"setupFutureUsage = %@", self.setupFutureUsage],
+                       [NSString stringWithFormat:@"useStripeSDK = %@", (self.useStripeSDK.boolValue) ? @"YES" : @"NO"],
+                       
                        // Source
                        [NSString stringWithFormat:@"sourceId = %@", self.sourceId],
                        [NSString stringWithFormat:@"sourceParams = %@", self.sourceParams],
-                       
+
                        // PaymentMethod
                        [NSString stringWithFormat:@"paymentMethodId = %@", self.paymentMethodId],
                        [NSString stringWithFormat:@"paymentMethodParams = %@", self.paymentMethodParams],
@@ -58,6 +60,22 @@
                        ];
 
     return [NSString stringWithFormat:@"<%@>", [props componentsJoinedByString:@"; "]];
+}
+
+- (nullable NSString *)setupFutureUsageRawString {
+    if (self.setupFutureUsage == nil) {
+        return nil;
+    }
+    STPPaymentIntentSetupFutureUsage setupFutureUsage = [self.setupFutureUsage integerValue];
+    switch (setupFutureUsage) {
+        case STPPaymentIntentSetupFutureUsageOnSession:
+            return @"on_session";
+        case STPPaymentIntentSetupFutureUsageOffSession:
+            return @"off_session";
+        case STPPaymentIntentSetupFutureUsageNone:
+        case STPPaymentIntentSetupFutureUsageUnknown:
+            return nil;
+    }
 }
 
 #pragma mark - Deprecated Properties
@@ -78,6 +96,26 @@
     self.savePaymentMethod = saveSourceToCustomer;
 }
 
+#pragma mark - NSCopying
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+    __typeof(self) copy = [[[self class] allocWithZone:zone] init];
+
+    copy.clientSecret = self.clientSecret;
+    copy.paymentMethodParams = self.paymentMethodParams;
+    copy.paymentMethodId = self.paymentMethodId;
+    copy.sourceParams = self.sourceParams;
+    copy.sourceId = self.sourceId;
+    copy.receiptEmail = self.receiptEmail;
+    copy.savePaymentMethod = self.savePaymentMethod;
+    copy.returnURL = self.returnURL;
+    copy.setupFutureUsage = self.setupFutureUsage;
+    copy.useStripeSDK = self.useStripeSDK;
+    copy.additionalAPIParameters = self.additionalAPIParameters;
+
+    return copy;
+}
+
 #pragma mark - STPFormEncodable
 
 + (nullable NSString *)rootObjectName {
@@ -89,11 +127,13 @@
              NSStringFromSelector(@selector(clientSecret)): @"client_secret",
              NSStringFromSelector(@selector(paymentMethodParams)): @"payment_method_data",
              NSStringFromSelector(@selector(paymentMethodId)): @"payment_method",
+             NSStringFromSelector(@selector(setupFutureUsageRawString)): @"setup_future_usage",
              NSStringFromSelector(@selector(sourceParams)): @"source_data",
              NSStringFromSelector(@selector(sourceId)): @"source",
              NSStringFromSelector(@selector(receiptEmail)): @"receipt_email",
              NSStringFromSelector(@selector(savePaymentMethod)): @"save_payment_method",
              NSStringFromSelector(@selector(returnURL)): @"return_url",
+             NSStringFromSelector(@selector(useStripeSDK)) : @"use_stripe_sdk",
              };
 }
 
