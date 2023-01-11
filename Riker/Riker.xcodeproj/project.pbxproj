@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CAA8E2DB294CFAD4008046C8 /* RikerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8E2DA294CFAD4008046C8 /* RikerApp.swift */; };
+		CAA8E2DD294CFAD4008046C8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8E2DC294CFAD4008046C8 /* ContentView.swift */; };
+		CAA8E2DF294CFAD6008046C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA8E2DE294CFAD6008046C8 /* Assets.xcassets */; };
+		CAA8E2E2294CFAD6008046C8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA8E2E1294CFAD6008046C8 /* Preview Assets.xcassets */; };
+		CAA8E2EC294CFAD6008046C8 /* RikerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8E2EB294CFAD6008046C8 /* RikerTests.swift */; };
+		CAA8E2F6294CFAD6008046C8 /* RikerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8E2F5294CFAD6008046C8 /* RikerUITests.swift */; };
+		CAA8E2F8294CFAD6008046C8 /* RikerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8E2F7294CFAD6008046C8 /* RikerUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CAA8E2E8294CFAD6008046C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAA8E2CF294CFAD4008046C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CAA8E2D6294CFAD4008046C8;
+			remoteInfo = Riker;
+		};
+		CAA8E2F2294CFAD6008046C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAA8E2CF294CFAD4008046C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CAA8E2D6294CFAD4008046C8;
+			remoteInfo = Riker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CAA8E2D7294CFAD4008046C8 /* Riker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Riker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAA8E2DA294CFAD4008046C8 /* RikerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RikerApp.swift; sourceTree = "<group>"; };
+		CAA8E2DC294CFAD4008046C8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CAA8E2DE294CFAD6008046C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CAA8E2E1294CFAD6008046C8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CAA8E2E7294CFAD6008046C8 /* RikerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RikerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAA8E2EB294CFAD6008046C8 /* RikerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RikerTests.swift; sourceTree = "<group>"; };
+		CAA8E2F1294CFAD6008046C8 /* RikerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RikerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAA8E2F5294CFAD6008046C8 /* RikerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RikerUITests.swift; sourceTree = "<group>"; };
+		CAA8E2F7294CFAD6008046C8 /* RikerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RikerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CAA8E2D4294CFAD4008046C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAA8E2E4294CFAD6008046C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAA8E2EE294CFAD6008046C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CAA8E2CE294CFAD4008046C8 = {
+			isa = PBXGroup;
+			children = (
+				CAA8E2D9294CFAD4008046C8 /* Riker */,
+				CAA8E2EA294CFAD6008046C8 /* RikerTests */,
+				CAA8E2F4294CFAD6008046C8 /* RikerUITests */,
+				CAA8E2D8294CFAD4008046C8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CAA8E2D8294CFAD4008046C8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CAA8E2D7294CFAD4008046C8 /* Riker.app */,
+				CAA8E2E7294CFAD6008046C8 /* RikerTests.xctest */,
+				CAA8E2F1294CFAD6008046C8 /* RikerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CAA8E2D9294CFAD4008046C8 /* Riker */ = {
+			isa = PBXGroup;
+			children = (
+				CAA8E2DA294CFAD4008046C8 /* RikerApp.swift */,
+				CAA8E2DC294CFAD4008046C8 /* ContentView.swift */,
+				CAA8E2DE294CFAD6008046C8 /* Assets.xcassets */,
+				CAA8E2E0294CFAD6008046C8 /* Preview Content */,
+			);
+			path = Riker;
+			sourceTree = "<group>";
+		};
+		CAA8E2E0294CFAD6008046C8 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				CAA8E2E1294CFAD6008046C8 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CAA8E2EA294CFAD6008046C8 /* RikerTests */ = {
+			isa = PBXGroup;
+			children = (
+				CAA8E2EB294CFAD6008046C8 /* RikerTests.swift */,
+			);
+			path = RikerTests;
+			sourceTree = "<group>";
+		};
+		CAA8E2F4294CFAD6008046C8 /* RikerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CAA8E2F5294CFAD6008046C8 /* RikerUITests.swift */,
+				CAA8E2F7294CFAD6008046C8 /* RikerUITestsLaunchTests.swift */,
+			);
+			path = RikerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CAA8E2D6294CFAD4008046C8 /* Riker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAA8E2FB294CFAD6008046C8 /* Build configuration list for PBXNativeTarget "Riker" */;
+			buildPhases = (
+				CAA8E2D3294CFAD4008046C8 /* Sources */,
+				CAA8E2D4294CFAD4008046C8 /* Frameworks */,
+				CAA8E2D5294CFAD4008046C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Riker;
+			productName = Riker;
+			productReference = CAA8E2D7294CFAD4008046C8 /* Riker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CAA8E2E6294CFAD6008046C8 /* RikerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAA8E2FE294CFAD6008046C8 /* Build configuration list for PBXNativeTarget "RikerTests" */;
+			buildPhases = (
+				CAA8E2E3294CFAD6008046C8 /* Sources */,
+				CAA8E2E4294CFAD6008046C8 /* Frameworks */,
+				CAA8E2E5294CFAD6008046C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CAA8E2E9294CFAD6008046C8 /* PBXTargetDependency */,
+			);
+			name = RikerTests;
+			productName = RikerTests;
+			productReference = CAA8E2E7294CFAD6008046C8 /* RikerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CAA8E2F0294CFAD6008046C8 /* RikerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAA8E301294CFAD6008046C8 /* Build configuration list for PBXNativeTarget "RikerUITests" */;
+			buildPhases = (
+				CAA8E2ED294CFAD6008046C8 /* Sources */,
+				CAA8E2EE294CFAD6008046C8 /* Frameworks */,
+				CAA8E2EF294CFAD6008046C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CAA8E2F3294CFAD6008046C8 /* PBXTargetDependency */,
+			);
+			name = RikerUITests;
+			productName = RikerUITests;
+			productReference = CAA8E2F1294CFAD6008046C8 /* RikerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CAA8E2CF294CFAD4008046C8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					CAA8E2D6294CFAD4008046C8 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					CAA8E2E6294CFAD6008046C8 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = CAA8E2D6294CFAD4008046C8;
+					};
+					CAA8E2F0294CFAD6008046C8 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = CAA8E2D6294CFAD4008046C8;
+					};
+				};
+			};
+			buildConfigurationList = CAA8E2D2294CFAD4008046C8 /* Build configuration list for PBXProject "Riker" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CAA8E2CE294CFAD4008046C8;
+			productRefGroup = CAA8E2D8294CFAD4008046C8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CAA8E2D6294CFAD4008046C8 /* Riker */,
+				CAA8E2E6294CFAD6008046C8 /* RikerTests */,
+				CAA8E2F0294CFAD6008046C8 /* RikerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CAA8E2D5294CFAD4008046C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAA8E2E2294CFAD6008046C8 /* Preview Assets.xcassets in Resources */,
+				CAA8E2DF294CFAD6008046C8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAA8E2E5294CFAD6008046C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAA8E2EF294CFAD6008046C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CAA8E2D3294CFAD4008046C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAA8E2DD294CFAD4008046C8 /* ContentView.swift in Sources */,
+				CAA8E2DB294CFAD4008046C8 /* RikerApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAA8E2E3294CFAD6008046C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAA8E2EC294CFAD6008046C8 /* RikerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAA8E2ED294CFAD6008046C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAA8E2F8294CFAD6008046C8 /* RikerUITestsLaunchTests.swift in Sources */,
+				CAA8E2F6294CFAD6008046C8 /* RikerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CAA8E2E9294CFAD6008046C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CAA8E2D6294CFAD4008046C8 /* Riker */;
+			targetProxy = CAA8E2E8294CFAD6008046C8 /* PBXContainerItemProxy */;
+		};
+		CAA8E2F3294CFAD6008046C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CAA8E2D6294CFAD4008046C8 /* Riker */;
+			targetProxy = CAA8E2F2294CFAD6008046C8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CAA8E2F9294CFAD6008046C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CAA8E2FA294CFAD6008046C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CAA8E2FC294CFAD6008046C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Riker/Preview Content\"";
+				DEVELOPMENT_TEAM = N939KU5DFM;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = name.paulevans.Riker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CAA8E2FD294CFAD6008046C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Riker/Preview Content\"";
+				DEVELOPMENT_TEAM = N939KU5DFM;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = name.paulevans.Riker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CAA8E2FF294CFAD6008046C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N939KU5DFM;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = name.paulevans.RikerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Riker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Riker";
+			};
+			name = Debug;
+		};
+		CAA8E300294CFAD6008046C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N939KU5DFM;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = name.paulevans.RikerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Riker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Riker";
+			};
+			name = Release;
+		};
+		CAA8E302294CFAD6008046C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N939KU5DFM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = name.paulevans.RikerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Riker;
+			};
+			name = Debug;
+		};
+		CAA8E303294CFAD6008046C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N939KU5DFM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = name.paulevans.RikerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Riker;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CAA8E2D2294CFAD4008046C8 /* Build configuration list for PBXProject "Riker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAA8E2F9294CFAD6008046C8 /* Debug */,
+				CAA8E2FA294CFAD6008046C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CAA8E2FB294CFAD6008046C8 /* Build configuration list for PBXNativeTarget "Riker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAA8E2FC294CFAD6008046C8 /* Debug */,
+				CAA8E2FD294CFAD6008046C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CAA8E2FE294CFAD6008046C8 /* Build configuration list for PBXNativeTarget "RikerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAA8E2FF294CFAD6008046C8 /* Debug */,
+				CAA8E300294CFAD6008046C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CAA8E301294CFAD6008046C8 /* Build configuration list for PBXNativeTarget "RikerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAA8E302294CFAD6008046C8 /* Debug */,
+				CAA8E303294CFAD6008046C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CAA8E2CF294CFAD4008046C8 /* Project object */;
+}
